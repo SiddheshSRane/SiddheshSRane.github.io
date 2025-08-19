@@ -1,185 +1,189 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Siddhesh Rane – Portfolio</title>
-  <meta name="description" content="Portfolio of Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Data Visualization." />
-  <meta name="theme-color" content="#0a66c2" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Siddhesh Rane - Data Analyst & Developer">
+  <title>Siddhesh Rane | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    :root {
-      --brand: #0a66c2;
-      --brand-dark: #004182;
-      --bg: #f9fafb;
-      --card: #fff;
-      --text: #111827;
-      --muted: #6b7280;
-      --radius: 16px;
-      --shadow: 0 6px 20px rgba(0,0,0,.05);
+    html {
+      scroll-behavior: smooth;
     }
-    html.dark {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.3s, color 0.3s;
     }
-    body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
-    h1,h2,h3,h4 { font-family: Poppins, sans-serif; }
-    .navbar { background: var(--card); box-shadow: var(--shadow); }
-    .nav-link { font-weight: 500; }
-    .nav-link:hover, .nav-link.active { color: var(--brand)!important; }
-    .btn-brand { background: var(--brand); color: #fff; border-radius: var(--radius); padding:.6rem 1.2rem; }
-    .btn-brand:hover { background: var(--brand-dark); }
-    .btn-outline-brand { border: 2px solid var(--brand); border-radius: var(--radius); color: var(--brand); padding:.6rem 1.2rem; }
-    .btn-outline-brand:hover { background: var(--brand); color:#fff; }
-    .section { padding: 5rem 0; }
-    .section-title { font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
-    .section-sub { text-align: center; color: var(--muted); margin-bottom: 2rem; }
-    .ui-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding:1.5rem; transition:.3s; }
-    .ui-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.1); }
-    .project-thumb { width:100%; border-radius:12px; aspect-ratio:16/10; object-fit:cover; }
-    .skill { display:flex; justify-content:space-between; font-weight:600; }
-    .progress { height:.6rem; background:#e5e7eb; border-radius:6px; overflow:hidden; }
-    .progress-bar { background:var(--brand); }
-    .dark-toggle { border:none; background:none; font-size:1.2rem; color:var(--muted); }
-    footer { color: var(--muted); }
+    .dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.8);
+      transition: background 0.3s;
+    }
+    .dark-mode .navbar {
+      background: rgba(18,18,18,0.8);
+    }
+    .navbar-nav .nav-link.active {
+      color: #0d6efd !important;
+      font-weight: 600;
+      border-bottom: 2px solid #0d6efd;
+    }
+    .section {
+      padding: 80px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#home">Siddhesh Rane</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="nav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
-        <button class="dark-toggle ms-3" id="modeToggle"><i class="bi bi-moon"></i></button>
+        <button class="btn btn-outline-primary ms-3" id="modeToggle">🌙</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header id="home" class="section text-center">
-    <div class="container" data-aos="fade-up">
-      <h1 class="display-4 fw-bold">I'm <span class="text-primary">Siddhesh Rane</span></h1>
-      <p class="lead">Junior Data Analyst • SQL • Python • Power BI</p>
-      <p class="text-muted">Turning raw data into insights that drive decisions.</p>
-      <div class="mt-4 d-flex justify-content-center gap-3">
-        <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" class="btn-brand" target="_blank">LinkedIn</a>
-        <a href="https://github.com/SiddheshSRane" class="btn-outline-brand" target="_blank">GitHub</a>
-        <a href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd36htKs38P" class="btn-outline-brand">Resume</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- About -->
-  <section id="about" class="section">
+  <!-- Sections -->
+  <section id="home" class="section text-center" data-aos="fade-up">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-sub">Aspiring Data Analyst passionate about SQL, Python, Power BI & Excel.</p>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="ui-card">
-            <h3 class="h5">Skills</h3>
-            <div class="mb-3"><div class="skill"><span>SQL</span><span>80%</span></div><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
-            <div class="mb-3"><div class="skill"><span>Python</span><span>85%</span></div><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
-            <div class="mb-3"><div class="skill"><span>Power BI</span><span>85%</span></div><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
-            <div><div class="skill"><span>Excel</span><span>80%</span></div><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="ui-card">
-            <h3 class="h5">Profile</h3>
-            <ul class="small">
-              <li><strong>Focus:</strong> Data Analytics & Visualization</li>
-              <li><strong>Libraries:</strong> Pandas, NumPy, Matplotlib, Seaborn</li>
-              <li><strong>Other Skills:</strong> Data Cleaning, Data Validation</li>
-              <li><strong>Interest:</strong> Data Storytelling</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <h1 class="fw-bold">Hi, I'm Siddhesh Rane</h1>
+      <p>Data Analyst | Web Developer</p>
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="section bg-light">
+  <section id="about" class="section" data-aos="fade-up">
     <div class="container">
-      <h2 class="section-title">Education</h2>
-      <div class="row g-4">
-        <div class="col-md-6"><div class="ui-card"><span class="text-muted small">2019–2022</span><h3 class="h6 mt-2">B.E. – Atharva College Of Engineering</h3></div></div>
-        <div class="col-md-6"><div class="ui-card"><span class="text-muted small">2017–2019</span><h3 class="h6 mt-2">Diploma – Thakur Polytechnic</h3></div></div>
-      </div>
+      <h2>About Me</h2>
+      <p>Passionate about data and technology with hands-on experience in analytics, visualization, and web development.</p>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="section">
+  <section id="skills" class="section bg-light" data-aos="fade-up">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="row g-4">
-        <div class="col-md-4"><a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank"><div class="ui-card h-100"><img src="images/proj_1.jpg" class="project-thumb" alt="Music Store SQL Analysis"><h3 class="h6 mt-3">Digital Music Store – SQL Analysis</h3></div></a></div>
-        <div class="col-md-4"><a href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis" target="_blank"><div class="ui-card h-100"><img src="images/proj_2.jpg" class="project-thumb" alt="Diwali Sales Analysis"><h3 class="h6 mt-3">Python – Diwali Sales Analysis</h3></div></a></div>
-        <div class="col-md-4"><a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank"><div class="ui-card h-100"><img src="images/proj_3.jpg" class="project-thumb" alt="Power BI Dashboard"><h3 class="h6 mt-3">Power BI – Sales Dashboard</h3></div></a></div>
-      </div>
+      <h2>Skills</h2>
+      <ul>
+        <li>Python, SQL, Excel</li>
+        <li>Power BI, Tableau</li>
+        <li>HTML, CSS, JavaScript</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section id="certifications" class="section bg-light">
+  <section id="education" class="section" data-aos="fade-up">
     <div class="container">
-      <h2 class="section-title">Certifications</h2>
-      <div class="row g-4">
-        <div class="col-md-4"><div class="ui-card h-100"><h3 class="h6">SQL (Basic)</h3><p class="text-muted small">HackerRank</p></div></div>
-        <div class="col-md-4"><div class="ui-card h-100"><h3 class="h6">Certified Data Scientist</h3><p class="text-muted small">TryCatch Classes</p><a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view" target="_blank" class="small text-primary">View</a></div></div>
-        <div class="col-md-4"><div class="ui-card h-100"><h3 class="h6">Accenture Data Analytics Simulation</h3><p class="text-muted small">Forage</p></div></div>
-      </div>
+      <h2>Education</h2>
+      <p>Bachelor's in Computer Science</p>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section text-center">
+  <section id="projects" class="section bg-light" data-aos="fade-up">
     <div class="container">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-sub">Let’s connect for projects, jobs, or collaborations.</p>
-      <div class="d-flex justify-content-center gap-3 mb-4">
-        <a href="mailto:siddhesh.sh.rane@gmail.com" class="btn-outline-brand"><i class="bi bi-envelope"></i> Email</a>
-        <a href="https://github.com/SiddheshSRane" class="btn-outline-brand" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" class="btn-outline-brand" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
-      </div>
+      <h2>Projects</h2>
+      <ul>
+        <li>Data Visualization Dashboard</li>
+        <li>Portfolio Website</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-3 border-top text-center small">© <span id="year"></span> Siddhesh Rane</footer>
+  <section id="resume" class="section" data-aos="fade-up">
+    <div class="container">
+      <h2>Resume</h2>
+      <a href="resume.pdf" class="btn btn-primary" target="_blank">Download Resume</a>
+    </div>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <section id="certifications" class="section bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2>Certifications</h2>
+      <ul>
+        <li>Google Data Analytics</li>
+        <li>Microsoft Power BI</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="section" data-aos="fade-up">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: siddheshrane@example.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Siddhesh Rane. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 700, once: true });
-    document.getElementById('year').textContent = new Date().getFullYear();
+    AOS.init();
+
+    // Dark/Light Mode
     const toggle = document.getElementById('modeToggle');
     toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      toggle.innerHTML = document.documentElement.classList.contains('dark') ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // Active Nav Highlight
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Auto close mobile navbar after click
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('#navbarNav');
+        if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
+          new bootstrap.Collapse(navbarCollapse).toggle();
+        }
+      });
     });
   </script>
 </body>
