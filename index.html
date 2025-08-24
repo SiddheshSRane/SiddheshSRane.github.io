@@ -5,181 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siddhesh Rane | Data Analyst Portfolio</title>
   <style>
-    /* ===== Reset & Fonts ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      line-height: 1.6;
-      background: #f9fbff;
-      color: #333;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    section {
-      padding: 60px 10%;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #0077ff;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Verdana,sans-serif; }
+    body { background:#f9fbff; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    section { padding:60px 10%; }
+    h2 { text-align:center; margin-bottom:30px; color:#0077ff; }
 
-    /* ===== Navbar ===== */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 10%;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 15px;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #0077ff;
-    }
+    /* Navbar */
+    nav { position:fixed; top:0; width:100%; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:space-between; padding:15px 10%; z-index:1000; }
+    nav a { margin:0 15px; font-weight:500; }
+    nav a:hover { color:#0077ff; }
 
-    /* ===== Hero ===== */
-    #hero {
-      height: 100vh;
-      background: linear-gradient(rgba(0,119,255,0.7), rgba(0,119,255,0.7)), url('https://picsum.photos/1600/900?random=1') no-repeat center center/cover;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    #hero h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-    #hero p {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-    }
-    #hero button {
-      background: white;
-      color: #0077ff;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: 0.3s;
-    }
-    #hero button:hover {
-      background: #f1f1f1;
-    }
+    /* Hero */
+    #hero { height:100vh; background:linear-gradient(rgba(0,119,255,0.7),rgba(0,119,255,0.7)),url('https://picsum.photos/1600/900?random=3') no-repeat center/cover; color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px; }
+    #hero h1 { font-size:3rem; margin-bottom:15px; }
+    #hero p { font-size:1.3rem; margin-bottom:20px; }
+    .hero-btns { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; }
+    .btn { background:white; color:#0077ff; padding:12px 25px; border:none; border-radius:25px; cursor:pointer; font-size:1rem; transition:.3s; font-weight:bold; }
+    .btn:hover { background:#f1f1f1; }
 
-    /* ===== About ===== */
-    #about {
-      background: #fff;
-      text-align: center;
-    }
-    #about p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-    }
+    /* Cards & Grids */
+    .grid { display:grid; gap:25px; }
+    .skills-grid { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); text-align:center; }
+    .projects-grid { grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+    .card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:.3s; }
+    .card:hover { transform:translateY(-5px); }
+    .card h3 { color:#0077ff; margin-bottom:10px; }
 
-    /* ===== Skills ===== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
-    .skill {
-      background: #eaf3ff;
-      padding: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
-    .skill:hover {
-      background: #0077ff;
-      color: white;
-    }
+    /* Contact */
+    #contact { text-align:center; }
+    .contact-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px; }
+    .contact-btn { background:#0077ff; color:white; padding:12px 20px; border-radius:8px; transition:.3s; font-weight:bold; }
+    .contact-btn:hover { background:#005ecb; }
 
-    /* ===== Projects ===== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-    .project-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-    .project-card h3 {
-      margin-bottom: 10px;
-      color: #0077ff;
-    }
-    .project-card p {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
-    .project-card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #0077ff;
-      font-weight: bold;
-    }
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#0077ff; color:white; }
 
-    /* ===== Contact ===== */
-    #contact {
-      text-align: center;
-    }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .contact-btn {
-      background: #0077ff;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    .contact-btn:hover {
-      background: #005ecb;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0077ff;
-      color: white;
-    }
-
-    /* ===== Responsive ===== */
-    @media(max-width:768px) {
-      #hero h1 { font-size: 2.2rem; }
-      #hero p { font-size: 1rem; }
-    }
+    @media(max-width:768px){ #hero h1{font-size:2.2rem;} #hero p{font-size:1rem;} }
   </style>
 </head>
 <body>
@@ -191,88 +53,145 @@
       <a href="#hero">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="hero">
     <h1>Hi, I'm Siddhesh Rane</h1>
-    <p>Aspiring Data Analyst | Power BI & Excel Enthusiast</p>
-    <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-      Explore My Work
-    </button>
+    <p>Junior Data Analyst | SQL | Python | Excel | Power BI</p>
+    <div class="hero-btns">
+      <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore My Work</button>
+      <button class="btn" onclick="downloadResume()">📄 Download Resume</button>
+    </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I am a B.E. Electronics graduate with a passion for Data Analytics.  
-      I specialize in transforming raw data into actionable insights using tools like Power BI, Excel, SQL, and Python.  
-      My focus is on solving real-world problems by analyzing data, identifying trends, and building interactive dashboards that drive decision-making.  
-      I believe data has the power to tell stories — and I love being the one who helps uncover them.
+      I'm an aspiring Data Analyst, currently sharpening my skills in Power BI, Excel, SQL, and Python.  
+      I genuinely enjoy working with data—finding patterns, asking the right questions, and solving real-world problems through analysis and visualization.  
+      With every project, I’m learning how to clean, explore, and present data in ways that make it easy to understand and valuable for decision-making.  
+      Curious and data-driven, I’m always eager to grow, connect, and contribute to impactful projects.
     </p>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill">Power BI</div>
-      <div class="skill">Excel</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Python</div>
-      <div class="skill">Pandas</div>
-      <div class="skill">NumPy</div>
-      <div class="skill">Matplotlib</div>
-      <div class="skill">Scikit-learn</div>
+    <div class="grid skills-grid">
+      <div class="card">Excel (Advanced Formulas, Pivot Tables, Power Query, Power Pivot)</div>
+      <div class="card">SQL (Queries, Joins, Aggregates, DML, DDL)</div>
+      <div class="card">Python (Pandas, NumPy, Matplotlib, Seaborn, Plotly)</div>
+      <div class="card">Power BI (ETL, Data Modelling, Dashboards)</div>
+      <div class="card">Data Cleaning & Validation</div>
+      <div class="card">Data Visualization & Reporting</div>
+      <div class="card">Data Collection & Management</div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Junior Data Analyst – Violet Infosystems Pvt. Ltd.</h3>
+      <p><em>Nov 2024 – Present | Mumbai, India</em></p>
+      <ul>
+        <li>Performed data validation and cleaning to ensure accuracy across platforms (LMS, Navigator).</li>
+        <li>Designed audiences for sales campaigns to improve marketing effectiveness.</li>
+        <li>Created reports and dashboards for performance tracking.</li>
+        <li>Configured learning groups and monitored user progress to support training initiatives.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Sales Dashboard (Power BI)</h3>
-        <p>Built an interactive dashboard to track revenue, sales trends, and regional performance for better business decisions.</p>
-        <a href="#">View Project</a>
+    <div class="grid projects-grid">
+      <div class="card">
+        <h3>Madhav Store Ecommerce Dashboard (Power BI)</h3>
+        <p>Developed an interactive dashboard for online sales analysis with drill-down and slicers.</p>
+        <a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank">View Project</a>
       </div>
-      <div class="project-card">
-        <h3>Excel Data Cleaning</h3>
-        <p>Processed and cleaned large raw sales data, removing duplicates, fixing missing values, and preparing reports for management.</p>
-        <a href="#">View Project</a>
+      <div class="card">
+        <h3>Pizza Sales Analysis (Excel)</h3>
+        <p>Analyzed sales trends, identified top-selling pizzas, and built an interactive Excel dashboard.</p>
       </div>
-      <div class="project-card">
-        <h3>Python Exploratory Data Analysis</h3>
-        <p>Performed EDA on datasets using Pandas, NumPy, and Matplotlib to identify trends and correlations.</p>
-        <a href="#">View Project</a>
+      <div class="card">
+        <h3>Vrinda Store Annual Sales Report (Excel)</h3>
+        <p>Segmented customers, identified adult women (30–49) as key group, and suggested targeted marketing.</p>
       </div>
-      <div class="project-card">
-        <h3>SQL Portfolio</h3>
-        <p>Designed and optimized SQL queries to analyze company data, improving reporting efficiency and query performance.</p>
-        <a href="#">View Project</a>
+      <div class="card">
+        <h3>HR Analytics Dashboard (Power BI)</h3>
+        <p>Created a dashboard to analyze attrition trends and recommended data-driven retention strategies.</p>
+      </div>
+      <div class="card">
+        <h3>Music Store Data Analysis (SQL)</h3>
+        <p>SQL analysis revealed Europe as the biggest market, rock as the top genre, and U2 as top artist.</p>
+        <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank">View Project</a>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Certifications -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="grid skills-grid">
+      <div class="card">SQL (Basic) – HackerRank</div>
+      <div class="card">Certified Data Scientist – TryCatch Classes</div>
+      <div class="card">Accenture Data Analytics & Visualization Job Simulation</div>
+      <div class="card">The Data Analyst Course: Complete Bootcamp 2023 – Udemy</div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>B.E. Electronics Engineering</h3>
+      <p>Atharva College of Engineering, Mumbai | 2019 – 2022 | CGPA: 8.40</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Let's connect! Reach out through any of the platforms below:</p>
+    <p>Let’s connect for opportunities or collaboration:</p>
     <div class="contact-links">
-      <a href="https://github.com/" target="_blank" class="contact-btn">GitHub</a>
-      <a href="https://linkedin.com/" target="_blank" class="contact-btn">LinkedIn</a>
-      <a href="mailto:your@email.com" class="contact-btn">Email Me</a>
+      <a href="mailto:siddhesh.sh.rane@gmail.com" class="contact-btn">📧 Email</a>
+      <a href="tel:+917506310919" class="contact-btn">📞 Call</a>
+      <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7" target="_blank" class="contact-btn">🔗 LinkedIn</a>
+      <a href="https://github.com/SiddheshSRane" target="_blank" class="contact-btn">💻 GitHub</a>
+      <button class="contact-btn" onclick="downloadResume()">📄 Download Resume</button>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Siddhesh Rane | Built with ❤️ and Data</p>
+    <p>© 2025 Siddhesh Rane | All Rights Reserved</p>
   </footer>
+
+  <!-- Smart Resume Download -->
+  <script>
+    function downloadResume() {
+      const resumeView = "https://drive.google.com/file/d/1iqG9G8T-LUpb11OG82Xb2Qd36htKs38P/view?usp=sharing";
+      const resumeDownload = "https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd36htKs38P";
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // Mobile → Download
+        window.location.href = resumeDownload;
+      } else {
+        // Desktop → Open in new tab
+        window.open(resumeView, "_blank");
+      }
+    }
+  </script>
 
 </body>
 </html>
