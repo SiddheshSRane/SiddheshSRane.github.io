@@ -1,233 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Siddhesh Rane – Portfolio</title>
-  <meta name="description" content="Siddhesh Rane – Junior Data Analyst. Portfolio showcasing projects in SQL, Python, Power BI & Data Visualization; education, skills, experience, certifications, and contact details.">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    /* Dark mode styling */
-    body.dark-mode {
-      background-color: #121212;
-      color: #f5f5f5;
-    }
-    body.dark-mode a {
-      color: #66b2ff;
-    }
-    body.dark-mode .card {
-      background-color: #1e1e1e;
-      color: #f5f5f5;
-    }
-    body.dark-mode .navbar {
-      background-color: #1e1e1e !important;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    @media (max-width: 768px) {
-      .hero {
-        padding: 60px 15px;
-      }
-    }
-
-    /* Skills logos */
-    .skill-logo {
-      max-height: 50px;
-      object-fit: contain;
-    }
-
-    /* Navbar theme toggle */
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Siddhesh Rane</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-        <a href="resume.pdf" class="btn btn-primary ms-3" target="_blank">Resume</a>
-        <button id="themeToggle" class="theme-toggle" title="Toggle theme">🖥️</button>
-      </div>
-    </div>
+  <nav>
+    <h1>Siddhesh Rane</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank" class="btn">Resume</a></li>
+      <li>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </li>
+    </ul>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Hi, I'm Siddhesh Rane</h1>
-      <p class="lead">Junior Data Analyst | SQL | Python | Power BI | Data Visualization</p>
-      <a href="#projects" class="btn btn-primary btn-lg m-2">View Projects</a>
-      <a href="#contact" class="btn btn-outline-light btn-lg m-2">Get in Touch</a>
-    </div>
-  </header>
-
-  <!-- About -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <h2 class="mb-4">About Me</h2>
-      <p>
-        I am a Junior Data Analyst with expertise in SQL, Python, Power BI, and Data Visualization. 
-        Passionate about transforming raw data into actionable insights, I aim to support organizations 
-        in making data-driven decisions.
-      </p>
+  <!-- Hero / About -->
+  <section id="about" class="hero">
+    <h2>Hi, I'm Siddhesh Rane</h2>
+    <p>Junior Data Analyst skilled in SQL, Python, Power BI & Excel. Passionate about data visualization, analytics & problem-solving.</p>
+    <p>📍 Mumbai, India | 🎓 B.E. Electronics Engineering (Atharva College of Engineering, Mumbai University) | 💼 Open to Data Analyst & BI Analyst roles</p>
+    <div class="hero-buttons">
+      <a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank" class="btn">Download Resume</a>
+      <a href="https://www.linkedin.com/in/siddhesh-rane-6631671b9/" target="_blank" class="btn">LinkedIn</a>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="mb-4">Skills</h2>
-      <div class="row g-4">
-        <div class="col-6 col-md-3 text-center">
-          <img src="images/sql.png" class="img-fluid skill-logo" alt="SQL" loading="lazy">
-          <p>SQL</p>
-        </div>
-        <div class="col-6 col-md-3 text-center">
-          <img src="images/python.png" class="img-fluid skill-logo" alt="Python" loading="lazy">
-          <p>Python</p>
-        </div>
-        <div class="col-6 col-md-3 text-center">
-          <img src="images/powerbi.png" class="img-fluid skill-logo" alt="Power BI" loading="lazy">
-          <p>Power BI</p>
-        </div>
-        <div class="col-6 col-md-3 text-center">
-          <img src="images/excel.png" class="img-fluid skill-logo" alt="Excel" loading="lazy">
-          <p>Excel</p>
-        </div>
-      </div>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">💻 Programming: Python, SQL</div>
+      <div class="skill-card">📊 BI Tools: Power BI, Excel</div>
+      <div class="skill-card">🗄 Databases: MySQL, PostgreSQL</div>
+      <div class="skill-card">⚙️ Core Competencies: Data Cleaning, Analysis, Visualization</div>
     </div>
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="py-5">
-    <div class="container">
-      <h2 class="mb-4">Experience</h2>
-      <ul>
-        <li><strong>Junior Data Analyst Intern</strong> – XYZ Company (2024)  
-          Worked on SQL queries, data cleaning, and dashboard building in Power BI.</li>
-      </ul>
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-card">
+      <h3>Junior Data Analyst – Violet Infosystems Pvt. Ltd.</h3>
+      <p>Nov 2024 – Present</p>
+      <p>Working on SQL reporting, Power BI dashboards, and client-driven data insights.</p>
+    </div>
+    <div class="experience-card">
+      <h3>Data Analyst Training – Violet Infosystems Pvt. Ltd.</h3>
+      <p>May 2024 – Nov 2024</p>
+      <p>Hands-on training in Python, SQL, Power BI, and real-world data analysis projects.</p>
     </div>
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="mb-4">Projects</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3>🎵 Digital Music Store – SQL</h3>
-            <p class="text-muted">Advanced SQL queries to uncover music store insights.</p>
-            <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank">View on GitHub</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3>🍕 Pizza Sales Analysis – SQL & Power BI</h3>
-            <p class="text-muted">Analyzed pizza sales data and built dashboards with KPIs.</p>
-            <a href="https://github.com/SiddheshSRane/Pizza-Sales-Analysis" target="_blank">View on GitHub</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-3 h-100">
-            <h3>📊 Business Insights 360 – Power BI</h3>
-            <p class="text-muted">Comprehensive Power BI dashboard analyzing sales, finance & marketing.</p>
-            <a href="https://github.com/SiddheshSRane/Business-Insights-360" target="_blank">View on GitHub</a>
-          </div>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <div class="card">
+        <img src="images/music-store.jpg" alt="Music Store SQL Project" class="card-img-top project-img" loading="lazy">
+        <div class="card-body">
+          <h3>🎵 Digital Music Store – SQL</h3>
+          <p>Analyzed sales, customer behavior, and track popularity using SQL queries.</p>
+          <a href="https://github.com/SiddheshRane17/Music-Store-Analysis-SQL" target="_blank">GitHub</a>
         </div>
       </div>
+
+      <div class="card">
+        <img src="images/diwali-sales.jpg" alt="Diwali Sales Analysis Project" class="card-img-top project-img" loading="lazy">
+        <div class="card-body">
+          <h3>🛍 Diwali Sales Analysis – Python</h3>
+          <p>Cleaned and visualized large-scale sales data using Pandas & Matplotlib.</p>
+          <a href="https://github.com/SiddheshRane17/Diwali-Sales-Analysis" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/madhav-store.jpg" alt="Madhav Store Dashboard Project" class="card-img-top project-img" loading="lazy">
+        <div class="card-body">
+          <h3>📊 Madhav Store Dashboard – Power BI</h3>
+          <p>Interactive dashboard providing sales insights, trends & performance KPIs.</p>
+          <a href="https://github.com/SiddheshRane17/Madhav-Store-Dashboard" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/super-store.jpg" alt="Super Store Dashboard Project" class="card-img-top project-img" loading="lazy">
+        <div class="card-body">
+          <h3>🏬 Super Store Dashboard – Power BI</h3>
+          <p>Built KPI dashboards for orders, sales, profit analysis by region & category.</p>
+          <a href="https://github.com/SiddheshRane17/Super-Store-Dashboard" target="_blank">GitHub</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Certifications -->
-  <section id="certifications" class="py-5">
-    <div class="container">
-      <h2 class="mb-4">Certifications</h2>
-      <ul>
-        <li><img src="images/udemy.png" class="skill-logo me-2" alt="Udemy" loading="lazy"> 
-          Data Analytics with Python – Udemy</li>
-        <li><img src="images/hackerrank.png" class="skill-logo me-2" alt="HackerRank" loading="lazy"> 
-          SQL (Intermediate) – HackerRank</li>
-      </ul>
-    </div>
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li>✅ HackerRank – SQL (Basic)</li>
+      <li>✅ TryCatch Classes – Certified Data Scientist (<a href="https://drive.google.com/file/d/15WgAoSyo50prshLwxhu37GiM9B7G0W44/view" target="_blank">View</a>)</li>
+      <li>✅ Accenture Forage – Data Analytics Simulation</li>
+      <li>✅ Udemy – The Complete SQL & Database Bootcamp (<a href="https://www.udemy.com/certificate/UC-5e0f8d97-510d-426c-9f20-d1e2b2f00978/" target="_blank">View</a>)</li>
+      <li>✅ Udemy – Data Analyst Bootcamp (<a href="https://www.udemy.com/certificate/UC-13dd90ab-5146-4e4d-b16a-470601cdb363/" target="_blank">View</a>)</li>
+    </ul>
   </section>
 
   <!-- Education -->
-  <section id="education" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="mb-4">Education</h2>
-      <p><strong>Bachelor of Science in Computer Science</strong> – Mumbai University (2023)</p>
-    </div>
+  <section id="education">
+    <h2>Education</h2>
+    <p>🎓 B.E. Electronics Engineering – Atharva College of Engineering, Mumbai University (2019–2022)</p>
+    <p>🎓 Diploma in Electronics Engineering – Thakur Polytechnic (2017–2019)</p>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-5">
-    <div class="container text-center">
-      <h2 class="mb-4">Get in Touch</h2>
-      <a href="mailto:siddheshrane@example.com" class="btn btn-primary m-2">Email</a>
-      <a href="https://linkedin.com/in/siddheshsrane" target="_blank" class="btn btn-outline-primary m-2">LinkedIn</a>
-      <a href="https://github.com/SiddheshSRane" target="_blank" class="btn btn-outline-dark m-2">GitHub</a>
-    </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:siddheshrane1712@gmail.com">siddheshrane1712@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919167452428">+91 9167452428</a></p>
+    <p>
+      <a href="https://github.com/SiddheshRane17" target="_blank">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/siddhesh-rane-6631671b9/" target="_blank">LinkedIn</a> | 
+      <a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank">Resume</a>
+    </p>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-3 bg-light">
-    <p class="mb-0">© 2025 Siddhesh Rane. All rights reserved.</p>
+  <footer>
+    <p>© 2025 Siddhesh Rane. Built with ❤️</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const themeToggle = document.getElementById("themeToggle");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    let theme = localStorage.getItem("theme") || (prefersDark ? "dark" : "light");
+    // Dark mode toggle
+    const toggle = document.getElementById("theme-toggle");
+    const icon = toggle.querySelector("i");
+    const currentTheme = localStorage.getItem("theme");
 
-    function applyTheme() {
-      document.body.classList.toggle("dark-mode", theme === "dark");
-      if (theme === "light") themeToggle.textContent = "🌞";
-      else if (theme === "dark") themeToggle.textContent = "🌙";
-      else themeToggle.textContent = "🖥️";
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      icon.classList.replace("fa-moon", "fa-sun");
     }
 
-    themeToggle.addEventListener("click", () => {
-      if (theme === "light") theme = "dark";
-      else if (theme === "dark") theme = "auto";
-      else theme = "light";
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      let theme = "light";
+      if (document.body.classList.contains("dark-mode")) {
+        icon.classList.replace("fa-moon", "fa-sun");
+        theme = "dark";
+      } else {
+        icon.classList.replace("fa-sun", "fa-moon");
+      }
       localStorage.setItem("theme", theme);
-      applyTheme();
     });
-
-    if (theme === "auto") theme = prefersDark ? "dark" : "light";
-    applyTheme();
   </script>
 </body>
 </html>
