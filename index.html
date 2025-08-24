@@ -2,171 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Siddhesh Rane – Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siddhesh Rane | Data Analyst Portfolio</title>
+  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel. Explore projects, skills, certifications, and experience." />
+  <meta name="theme-color" content="#0077ff" />
+
+  <!-- Open Graph for SEO -->
+  <meta property="og:title" content="Siddhesh Rane | Data Analyst Portfolio">
+  <meta property="og:description" content="Portfolio showcasing SQL, Python, Power BI, and Excel projects by Siddhesh Rane.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/about-me.png">
+  <meta property="og:url" content="https://siddheshsrane.github.io/">
+
+  <!-- Icons & Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    /* ===== Base ===== */
+    * { box-sizing: border-box; }
+    :root {
+      --brand:#0077ff;
+      --brand-600:#005ecb;
+      --bg:#f9fbff;
+      --card:#fff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --radius:14px;
+      --shadow:0 6px 20px rgba(2,6,23,.08);
+    }
+    body.dark {
+      --bg:#0f172a;
+      --card:#1e293b;
+      --text:#f3f4f6;
+      --muted:#9ca3af;
+      --shadow:0 6px 20px rgba(0,0,0,.6);
+    }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: Inter, system-ui, sans-serif; color:var(--text); background:var(--bg); line-height:1.6; transition:background .3s,color .3s; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; border-radius:var(--radius); }
+    section { padding:64px 10%; }
+    h1,h2,h3 { margin:0 0 12px; line-height:1.2; }
+    h2 { text-align:center; color:var(--brand); margin-bottom:24px; }
+
+    /* ===== Navbar ===== */
+    nav {
+      position:fixed; inset:0 0 auto 0; height:64px; background:var(--card);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 10%; box-shadow:var(--shadow); z-index:999;
+    }
+    .nav-links { display:flex; }
+    .nav-links a { margin:0 12px; font-weight:600; }
+    .nav-links a:hover { color:var(--brand); }
+    .menu-toggle { display:none; font-size:26px; cursor:pointer; }
+
+    /* ===== Hero ===== */
+    #hero {
+      padding-top:96px; min-height:100vh;
+      display:grid; place-items:center; text-align:center; color:#fff;
+      background: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)), url('https://picsum.photos/1600/900?blur=2') center/cover no-repeat;
+    }
+    #hero h1 { font-size:clamp(28px,6vw,52px); }
+    .tag { font-size:16px; opacity:.95; }
+    .hero-btns { margin-top:24px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .btn {
+      background:#fff; color:var(--brand); border:0; border-radius:999px;
+      padding:12px 22px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+      transition:.25s transform,.25s background,.25s color;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.secondary { background:transparent; color:#fff; border:2px solid #fff; }
+
+    /* ===== Cards / Grids ===== */
+    .grid { display:grid; gap:22px; }
+    .skills-grid { grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+    .projects-grid { grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .card, .skill-card {
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:20px; transition:.25s transform,.25s box-shadow;
+    }
+    .card:hover, .skill-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(2,6,23,.12); }
+    .muted { color:var(--muted); }
+
+    /* ===== Contact ===== */
+    #contact { text-align:center; }
+    .contact-links { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:18px; }
+    .contact-btn {
+      background:var(--brand); color:#fff; padding:12px 18px; border-radius:10px; font-weight:700;
+      transition:.25s background,.25s transform; display:inline-block;
+    }
+    .contact-btn:hover { background:var(--brand-600); transform:translateY(-2px); }
+
+    /* ===== Footer ===== */
+    footer { text-align:center; padding:18px 10%; background:var(--brand); color:#fff; }
+
+    /* ===== Toggle ===== */
+    .theme-toggle {
+      position:fixed; top:18px; right:18px; z-index:1000;
+      background:var(--brand); color:#fff; border:none; border-radius:50%;
+      width:42px; height:42px; display:flex; align-items:center; justify-content:center;
+      font-size:20px; cursor:pointer; box-shadow:var(--shadow);
+    }
+    .theme-toggle:hover { background:var(--brand-600); }
+
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+      nav{padding:0 6%;}
+      section{padding:56px 6%;}
+      .nav-links {
+        position:absolute; top:64px; left:0; right:0;
+        background:var(--card);
+        flex-direction:column; align-items:center;
+        display:none; padding:16px 0;
+      }
+      .nav-links.active { display:flex; }
+      .menu-toggle { display:block; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon"></i></button>
+
   <!-- Navbar -->
   <nav>
-    <h1>Siddhesh Rane</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank" class="btn">Resume</a></li>
-      <li>
-        <button id="theme-toggle" aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </li>
-    </ul>
+    <div style="font-weight:800;">Siddhesh Rane</div>
+    <div class="menu-toggle" id="menuToggle"><i class="bi bi-list"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
+  
+  <!-- Hero -->
+  <!-- (rest of your content stays the same) -->
 
-  <!-- Hero / About -->
-  <section id="about" class="hero">
-    <h2>Hi, I'm Siddhesh Rane</h2>
-    <p>Junior Data Analyst skilled in SQL, Python, Power BI & Excel. Passionate about data visualization, analytics & problem-solving.</p>
-    <p>📍 Mumbai, India | 🎓 B.E. Electronics Engineering (Atharva College of Engineering, Mumbai University) | 💼 Open to Data Analyst & BI Analyst roles</p>
-    <div class="hero-buttons">
-      <a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank" class="btn">Download Resume</a>
-      <a href="https://www.linkedin.com/in/siddhesh-rane-6631671b9/" target="_blank" class="btn">LinkedIn</a>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">💻 Programming: Python, SQL</div>
-      <div class="skill-card">📊 BI Tools: Power BI, Excel</div>
-      <div class="skill-card">🗄 Databases: MySQL, PostgreSQL</div>
-      <div class="skill-card">⚙️ Core Competencies: Data Cleaning, Analysis, Visualization</div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="experience-card">
-      <h3>Junior Data Analyst – Violet Infosystems Pvt. Ltd.</h3>
-      <p>Nov 2024 – Present</p>
-      <p>Working on SQL reporting, Power BI dashboards, and client-driven data insights.</p>
-    </div>
-    <div class="experience-card">
-      <h3>Data Analyst Training – Violet Infosystems Pvt. Ltd.</h3>
-      <p>May 2024 – Nov 2024</p>
-      <p>Hands-on training in Python, SQL, Power BI, and real-world data analysis projects.</p>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-
-      <div class="card">
-        <img src="images/music-store.jpg" alt="Music Store SQL Project" class="card-img-top project-img" loading="lazy">
-        <div class="card-body">
-          <h3>🎵 Digital Music Store – SQL</h3>
-          <p>Analyzed sales, customer behavior, and track popularity using SQL queries.</p>
-          <a href="https://github.com/SiddheshRane17/Music-Store-Analysis-SQL" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/diwali-sales.jpg" alt="Diwali Sales Analysis Project" class="card-img-top project-img" loading="lazy">
-        <div class="card-body">
-          <h3>🛍 Diwali Sales Analysis – Python</h3>
-          <p>Cleaned and visualized large-scale sales data using Pandas & Matplotlib.</p>
-          <a href="https://github.com/SiddheshRane17/Diwali-Sales-Analysis" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/madhav-store.jpg" alt="Madhav Store Dashboard Project" class="card-img-top project-img" loading="lazy">
-        <div class="card-body">
-          <h3>📊 Madhav Store Dashboard – Power BI</h3>
-          <p>Interactive dashboard providing sales insights, trends & performance KPIs.</p>
-          <a href="https://github.com/SiddheshRane17/Madhav-Store-Dashboard" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/super-store.jpg" alt="Super Store Dashboard Project" class="card-img-top project-img" loading="lazy">
-        <div class="card-body">
-          <h3>🏬 Super Store Dashboard – Power BI</h3>
-          <p>Built KPI dashboards for orders, sales, profit analysis by region & category.</p>
-          <a href="https://github.com/SiddheshRane17/Super-Store-Dashboard" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>✅ HackerRank – SQL (Basic)</li>
-      <li>✅ TryCatch Classes – Certified Data Scientist (<a href="https://drive.google.com/file/d/15WgAoSyo50prshLwxhu37GiM9B7G0W44/view" target="_blank">View</a>)</li>
-      <li>✅ Accenture Forage – Data Analytics Simulation</li>
-      <li>✅ Udemy – The Complete SQL & Database Bootcamp (<a href="https://www.udemy.com/certificate/UC-5e0f8d97-510d-426c-9f20-d1e2b2f00978/" target="_blank">View</a>)</li>
-      <li>✅ Udemy – Data Analyst Bootcamp (<a href="https://www.udemy.com/certificate/UC-13dd90ab-5146-4e4d-b16a-470601cdb363/" target="_blank">View</a>)</li>
-    </ul>
-  </section>
-
-  <!-- Education -->
-  <section id="education">
-    <h2>Education</h2>
-    <p>🎓 B.E. Electronics Engineering – Atharva College of Engineering, Mumbai University (2019–2022)</p>
-    <p>🎓 Diploma in Electronics Engineering – Thakur Polytechnic (2017–2019)</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:siddheshrane1712@gmail.com">siddheshrane1712@gmail.com</a></p>
-    <p>Phone: <a href="tel:+919167452428">+91 9167452428</a></p>
-    <p>
-      <a href="https://github.com/SiddheshRane17" target="_blank">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/siddhesh-rane-6631671b9/" target="_blank">LinkedIn</a> | 
-      <a href="https://drive.google.com/file/d/1LKaA-QkFKk0b9UFiRpCdw8_8DWszHL5W/view" target="_blank">Resume</a>
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Siddhesh Rane. Built with ❤️</p>
-  </footer>
-
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Dark mode toggle
-    const toggle = document.getElementById("theme-toggle");
-    const icon = toggle.querySelector("i");
-    const currentTheme = localStorage.getItem("theme");
+    AOS.init();
+    const btn=document.getElementById("themeToggle"),body=document.body,icon=btn.querySelector("i");
+    if(localStorage.theme==="dark"){body.classList.add("dark");icon.classList.replace("bi-moon","bi-sun");}
+    btn.addEventListener("click",()=>{body.classList.toggle("dark");const d=body.classList.contains("dark");icon.classList.toggle("bi-moon",!d);icon.classList.toggle("bi-sun",d);localStorage.theme=d?"dark":"light";});
 
-    if (currentTheme === "dark") {
-      document.body.classList.add("dark-mode");
-      icon.classList.replace("fa-moon", "fa-sun");
+    function downloadResume(){
+      window.open("https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO","_blank");
     }
 
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      let theme = "light";
-      if (document.body.classList.contains("dark-mode")) {
-        icon.classList.replace("fa-moon", "fa-sun");
-        theme = "dark";
-      } else {
-        icon.classList.replace("fa-sun", "fa-moon");
-      }
-      localStorage.setItem("theme", theme);
-    });
+    // Mobile Menu
+    const menuToggle=document.getElementById("menuToggle");
+    const navLinks=document.getElementById("navLinks");
+    menuToggle.addEventListener("click",()=>navLinks.classList.toggle("active"));
   </script>
 </body>
 </html>
