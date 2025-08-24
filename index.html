@@ -1,124 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Siddhesh Rane | Data Analyst Portfolio</title>
-  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel. Explore projects, skills, certifications, and experience." />
-  <meta name="theme-color" content="#0077ff" />
-
-  <!-- Open Graph for SEO -->
-  <meta property="og:title" content="Siddhesh Rane | Data Analyst Portfolio">
-  <meta property="og:description" content="Portfolio showcasing SQL, Python, Power BI, and Excel projects by Siddhesh Rane.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="images/about-me.png">
-  <meta property="og:url" content="https://siddheshsrane.github.io/">
-
-  <!-- Icons & Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
+  <title>Siddhesh Rane – Portfolio</title>
+  <meta name="description" content="Siddhesh Rane – Junior Data Analyst. Portfolio showcasing projects in SQL, Python, Power BI & Data Visualization; education, skills, experience, certifications, and contact details.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    /* ===== Base ===== */
-    * { box-sizing: border-box; }
     :root {
-      --brand:#0077ff;
-      --brand-600:#005ecb;
-      --bg:#f9fbff;
-      --card:#fff;
-      --text:#1f2937;
-      --muted:#6b7280;
-      --radius:14px;
-      --shadow:0 6px 20px rgba(2,6,23,.08);
+      --bg: #ffffff;
+      --text: #000000;
+      --primary: #007bff;
     }
     body.dark {
-      --bg:#0f172a;
-      --card:#1e293b;
-      --text:#f3f4f6;
-      --muted:#9ca3af;
-      --shadow:0 6px 20px rgba(0,0,0,.6);
+      --bg: #121212;
+      --text: #eaeaea;
+      --primary: #66b2ff;
     }
-    html { scroll-behavior: smooth; }
-    body { margin:0; font-family: Inter, system-ui, sans-serif; color:var(--text); background:var(--bg); line-height:1.6; transition:background .3s,color .3s; }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; display:block; border-radius:var(--radius); }
-    section { padding:64px 10%; }
-    h1,h2,h3 { margin:0 0 12px; line-height:1.2; }
-    h2 { text-align:center; color:var(--brand); margin-bottom:24px; }
-
-    /* ===== Navbar ===== */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
     nav {
-      position:fixed; inset:0 0 auto 0; height:64px; background:var(--card);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 10%; box-shadow:var(--shadow); z-index:999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
     }
-    .nav-links { display:flex; }
-    .nav-links a { margin:0 12px; font-weight:600; }
-    .nav-links a:hover { color:var(--brand); }
-    .menu-toggle { display:none; font-size:26px; cursor:pointer; }
-
-    /* ===== Hero ===== */
-    #hero {
-      padding-top:96px; min-height:100vh;
-      display:grid; place-items:center; text-align:center; color:#fff;
-      background: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)), url('https://picsum.photos/1600/900?blur=2') center/cover no-repeat;
+    nav .nav-links {
+      display: flex;
+      gap: 1rem;
     }
-    #hero h1 { font-size:clamp(28px,6vw,52px); }
-    .tag { font-size:16px; opacity:.95; }
-    .hero-btns { margin-top:24px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-    .btn {
-      background:#fff; color:var(--brand); border:0; border-radius:999px;
-      padding:12px 22px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
-      transition:.25s transform,.25s background,.25s color;
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
     }
-    .btn:hover { transform:translateY(-2px); }
-    .btn.secondary { background:transparent; color:#fff; border:2px solid #fff; }
-
-    /* ===== Cards / Grids ===== */
-    .grid { display:grid; gap:22px; }
-    .skills-grid { grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
-    .projects-grid { grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
-    .card, .skill-card {
-      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
-      padding:20px; transition:.25s transform,.25s box-shadow;
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
-    .card:hover, .skill-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(2,6,23,.12); }
-    .muted { color:var(--muted); }
-
-    /* ===== Contact ===== */
-    #contact { text-align:center; }
-    .contact-links { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:18px; }
-    .contact-btn {
-      background:var(--brand); color:#fff; padding:12px 18px; border-radius:10px; font-weight:700;
-      transition:.25s background,.25s transform; display:inline-block;
-    }
-    .contact-btn:hover { background:var(--brand-600); transform:translateY(-2px); }
-
-    /* ===== Footer ===== */
-    footer { text-align:center; padding:18px 10%; background:var(--brand); color:#fff; }
-
-    /* ===== Toggle ===== */
     .theme-toggle {
-      position:fixed; top:18px; right:18px; z-index:1000;
-      background:var(--brand); color:#fff; border:none; border-radius:50%;
-      width:42px; height:42px; display:flex; align-items:center; justify-content:center;
-      font-size:20px; cursor:pointer; box-shadow:var(--shadow);
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text);
     }
-    .theme-toggle:hover { background:var(--brand-600); }
-
-    /* ===== Responsive ===== */
-    @media(max-width:768px){
-      nav{padding:0 6%;}
-      section{padding:56px 6%;}
-      .nav-links {
-        position:absolute; top:64px; left:0; right:0;
-        background:var(--card);
-        flex-direction:column; align-items:center;
-        display:none; padding:16px 0;
+    header, section, footer {
+      padding: 2rem;
+    }
+    h1, h2, h3 {
+      color: var(--primary);
+    }
+    footer {
+      text-align: center;
+      border-top: 1px solid #ccc;
+      padding: 1rem;
+    }
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--bg);
+        width: 200px;
+        padding: 1rem;
+        box-shadow: -2px 2px 6px rgba(0,0,0,0.2);
       }
-      .nav-links.active { display:flex; }
-      .menu-toggle { display:block; }
+      nav .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -141,26 +110,107 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
-  
+
   <!-- Hero -->
-  <!-- (rest of your content stays the same) -->
+  <header id="hero" data-aos="fade-up">
+    <h1>Hi, I'm Siddhesh Rane 👋</h1>
+    <p>Junior Data Analyst | SQL | Python | Power BI | Data Visualization</p>
+    <button onclick="downloadResume()">Download Resume</button>
+  </header>
+
+  <!-- About -->
+  <section id="about" data-aos="fade-right">
+    <h2>About Me</h2>
+    <p>I am passionate about transforming raw data into actionable insights. Skilled in SQL, Python, and data visualization tools like Power BI, I love solving business problems using data.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" data-aos="fade-left">
+    <h2>Skills</h2>
+    <ul>
+      <li>SQL</li>
+      <li>Python</li>
+      <li>Power BI</li>
+      <li>Excel</li>
+      <li>Data Visualization</li>
+    </ul>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" data-aos="fade-right">
+    <h2>Experience</h2>
+    <p>Internships and hands-on projects where I built dashboards, automated reports, and optimized queries.</p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" data-aos="fade-left">
+    <h2>Projects</h2>
+    <ul>
+      <li>Sales Dashboard – Power BI</li>
+      <li>Data Cleaning with Python</li>
+      <li>SQL Query Optimization</li>
+    </ul>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" data-aos="fade-right">
+    <h2>Certifications</h2>
+    <ul>
+      <li>Google Data Analytics Certificate</li>
+      <li>Python for Data Science</li>
+      <li>Power BI Advanced</li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section id="education" data-aos="fade-left">
+    <h2>Education</h2>
+    <p>Bachelor’s Degree in [Your Field]</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: siddhesh@example.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/siddhesh-rane" target="_blank">linkedin.com/in/siddhesh-rane</a></p>
+    <p>GitHub: <a href="https://github.com/siddheshsrane" target="_blank">github.com/siddheshsrane</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Siddhesh Rane. All Rights Reserved.</p>
+  </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-    const btn=document.getElementById("themeToggle"),body=document.body,icon=btn.querySelector("i");
-    if(localStorage.theme==="dark"){body.classList.add("dark");icon.classList.replace("bi-moon","bi-sun");}
-    btn.addEventListener("click",()=>{body.classList.toggle("dark");const d=body.classList.contains("dark");icon.classList.toggle("bi-moon",!d);icon.classList.toggle("bi-sun",d);localStorage.theme=d?"dark":"light";});
 
+    // Theme toggle
+    const btn=document.getElementById("themeToggle"),
+          body=document.body,
+          icon=btn.querySelector("i");
+    if(localStorage.theme==="dark"){
+      body.classList.add("dark");
+      icon.classList.replace("bi-moon","bi-sun");
+    }
+    btn.addEventListener("click",()=>{
+      body.classList.toggle("dark");
+      const d=body.classList.contains("dark");
+      icon.classList.toggle("bi-moon",!d);
+      icon.classList.toggle("bi-sun",d);
+      localStorage.theme=d?"dark":"light";
+    });
+
+    // Resume download
     function downloadResume(){
       window.open("https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO","_blank");
     }
 
-    // Mobile Menu
-    const menuToggle=document.getElementById("menuToggle");
-    const navLinks=document.getElementById("navLinks");
+    // Mobile menu
+    const menuToggle=document.getElementById("menuToggle"),
+          navLinks=document.getElementById("navLinks");
     menuToggle.addEventListener("click",()=>navLinks.classList.toggle("active"));
   </script>
 </body>
