@@ -1,197 +1,307 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Siddhesh Rane – Portfolio</title>
-  <meta name="description" content="Siddhesh Rane – Junior Data Analyst. Portfolio showcasing projects in SQL, Python, Power BI & Data Visualization; education, skills, experience, certifications, and contact details.">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
+  <title>Siddhesh Rane – Data Analyst Portfolio</title>
+  <meta name="description" content="Siddhesh Rane – Junior Data Analyst. Portfolio showcasing projects in SQL, Python, Power BI & Data Visualization; education, skills, experience, certifications, and contact details." />
+  <meta name="theme-color" content="#0077ff" />  <!-- Open Graph -->  <meta property="og:title" content="Siddhesh Rane | Data Analyst Portfolio" />
+  <meta property="og:description" content="Portfolio showcasing SQL, Python, Power BI, and Excel projects by Siddhesh Rane." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/about-me.webp" />
+  <meta property="og:url" content="https://siddheshsrane.github.io/" />  <!-- Bootstrap & Icons -->  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />  <style>
+    /* ===== Design Tokens ===== */
     :root {
       --primary: #0077ff;
-      --radius: 12px;
+      --primary-600: #005ecb;
+      --bg: #f9fbff;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --radius: 14px;
+      --shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+    }
+    /* Dark theme variables */
+    .dark {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --shadow: 0 6px 20px rgba(0,0,0,.6);
     }
 
-    body { font-family: "Segoe UI", sans-serif; }
-
-    /* Navbar */
-    nav.navbar { background: #fff; }
-    nav .nav-link { color: #333; transition: .3s; }
-    nav .nav-link:hover { color: var(--primary); }
-
-    /* Hero */
-    #hero {
-      padding-top: 120px;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: #fff;
-      background: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)),
-                  url('https://picsum.photos/800/600.webp?blur=2') center/cover no-repeat;
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      transition: background .3s, color .3s;
     }
-    @media(min-width:768px){
-      #hero {
-        background-image: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)),
-                          url('https://picsum.photos/1600/900.webp?blur=2');
-      }
-    }
-    .hero-btns { display:flex; gap:15px; justify-content:center; }
-
-    /* Sections */
+    img { max-width: 100%; display: block; border-radius: var(--radius); }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
     section { padding: 80px 10%; }
-    @media(max-width:576px){
+    @media (max-width: 768px) { section { padding: 56px 6%; } }
+    @media (max-width: 576px) {
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
       section { padding: 48px 5%; }
-      .hero-btns { flex-direction: column; gap: 10px; }
     }
 
-    /* Images */
-    .skill-card img {
-      max-height: 40px;
-      object-fit: contain;
-    }
-    .project-img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      object-fit: cover;
-    }
+    /* ===== Navbar ===== */
+    .navbar { background: var(--card); box-shadow: var(--shadow); }
+    .navbar .nav-link { font-weight: 600; margin: 0 .25rem; }
+    .navbar .nav-link:hover { color: var(--primary); }
 
-    /* Contact buttons */
-    .contact-links { display:flex; flex-wrap:wrap; gap:10px; }
-    @media(max-width:576px){
-      .contact-links { flex-direction:column; align-items:center; }
-      .contact-btn { width:100%; text-align:center; }
+    /* ===== Theme Toggle (floating) ===== */
+    .theme-toggle {
+      position: fixed; right: 16px; bottom: 16px; z-index: 1100;
+      width: 46px; height: 46px; border-radius: 999px; border: none;
+      background: var(--primary); color: #fff; box-shadow: var(--shadow);
+      display: grid; place-items: center; font-size: 20px; cursor: pointer;
     }
-  </style>
-</head>
-<body>
+    .theme-toggle:hover { background: var(--primary-600); }
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
-  <div class="container-fluid px-3">
-    <a class="navbar-brand fw-bold" href="#">Siddhesh Rane</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-      <ul class="navbar-nav fw-semibold">
-        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+    /* ===== Hero ===== */
+    #hero {
+      padding-top: 120px; min-height: 100vh; display: grid; place-items: center;
+      text-align: center; color: #fff;
+      background: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)),
+                  url('https://picsum.photos/800/600.webp?blur=2') center/cover no-repeat;
+    }
+    @media (min-width: 768px) {
+      #hero { background-image: linear-gradient(rgba(0,119,255,.75), rgba(0,119,255,.75)), url('https://picsum.photos/1600/900.webp?blur=2'); }
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== Cards / Grids ===== */
+    .grid { display: grid; gap: 22px; }
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .projects-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card, .skill-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; transition: .25s transform, .25s box-shadow; }
+    .card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(2,6,23,.12); }
+    .muted { color: var(--muted); }
+
+    /* ===== Images ===== */
+    .skill-card img { max-height: 40px; object-fit: contain; }
+    .project-img { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); }
+
+    /* ===== Contact ===== */
+    #contact { text-align: center; }
+    .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+    .contact-btn { background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 700; transition: .25s background, .25s transform; display: inline-block; }
+    .contact-btn:hover { background: var(--primary-600); transform: translateY(-2px); }
+    @media (max-width: 576px) { .contact-links { flex-direction: column; gap: 10px; align-items: center; } .contact-btn { width: 100%; text-align: center; } }
+
+    /* ===== Footer ===== */
+    footer { text-align: center; padding: 18px 10%; background: var(--primary); color: #fff; }
+  </style></head>
+<body>  <!-- Navbar -->  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-3">
+      <a class="navbar-brand fw-bold" href="#hero">Siddhesh Rane</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav fw-semibold">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
-<!-- Hero -->
-<header id="hero">
-  <div>
-    <h1>Hi, I’m Siddhesh Rane</h1>
-    <p class="tag">Junior Data Analyst • SQL • Python • Excel • Power BI</p>
-    <div class="hero-btns">
-      <button class="btn btn-light" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore</button>
-      <button class="btn btn-outline-light" onclick="downloadResume()">📄 Resume</button>
+  </nav>  <!-- Hero -->  <header id="hero">
+    <div>
+      <h1 style="font-size:clamp(28px,6vw,52px)">Hi, I’m Siddhesh Rane</h1>
+      <p class="tag">Junior Data Analyst • SQL • Python • Excel • Power BI</p>
+      <div class="hero-btns mt-3">
+        <button class="btn btn-light fw-semibold" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore</button>
+        <button class="btn btn-outline-light fw-semibold" onclick="downloadResume()">📄 Resume</button>
+      </div>
     </div>
-  </div>
-</header>
-
-<!-- About -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a Junior Data Analyst passionate about uncovering insights from data using SQL, Python, Power BI, and Excel. My projects demonstrate expertise in transforming raw data into meaningful dashboards and reports that support business decisions.</p>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>SQL (Advanced Queries, Joins, Window Functions)</li>
-    <li>Python (Pandas, NumPy, Matplotlib)</li>
-    <li>Power BI (Interactive Dashboards)</li>
-    <li>Excel (Pivot Tables, Data Cleaning)</li>
-  </ul>
-</section>
-
-<!-- Experience -->
-<section id="experience">
-  <h2>Experience</h2>
-  <p><strong>Data Analyst Intern – XYZ Company</strong> (Jan 2024 – Jun 2024)<br>
-     Built dashboards and automated reports that reduced manual work by 30%.</p>
-</section>
-
-<!-- Projects -->
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="card p-3">
+  </header>  <!-- About -->  <section id="about">
+    <h2 class="text-primary" style="color:var(--primary)!important">About Me</h2>
+    <p>I’m an aspiring Data Analyst passionate about transforming raw data into actionable insights. Skilled in SQL, Python, Excel, and Power BI, I specialize in building dashboards, performing data analysis, and supporting data‑driven decision‑making.</p>
+    <div class="grid skills-grid mt-3">
+      <div class="skill-card">📍 Mumbai, India</div>
+      <div class="skill-card">🎓 B.E. Electronics Engg.</div>
+      <div class="skill-card">💼 Open to Data Analyst Roles</div>
+    </div>
+  </section>  <!-- Skills -->  <section id="skills">
+    <h2 class="text-primary" style="color:var(--primary)!important">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>💻 Programming & Data</h3><ul class="mb-0"><li>SQL • Python • Pandas • NumPy • Matplotlib • Seaborn • scikit‑learn • Jupyter • Git/GitHub</li></ul></div>
+      <div class="skill-card"><h3>📊 Business Intelligence</h3><ul class="mb-0"><li>Power BI • DAX • Data Modeling • Excel • Power Query • Pivot Tables • Google Sheets</li></ul></div>
+      <div class="skill-card"><h3>🗄️ Databases</h3><ul class="mb-0"><li>MySQL • PostgreSQL</li></ul></div>
+      <div class="skill-card"><h3>🚀 Core Competencies</h3><ul class="mb-0"><li>Data Cleaning • Validation • Visualization • Storytelling • Problem Solving • Communication</li></ul></div>
+    </div>
+  </section>  <!-- Experience -->  <section id="experience">
+    <h2 class="text-primary" style="color:var(--primary)!important">Experience</h2>
+    <div class="grid skills-grid">
+      <div class="card">
+        <h3>Junior Data Analyst</h3>
+        <p class="muted">Violet Infosystems Pvt. Ltd. | Nov 2024 – Present</p>
+        <ul>
+          <li>Created Power BI dashboards for sales & operational insights.</li>
+          <li>Automated Excel reports, reducing manual effort.</li>
+          <li>Wrote SQL queries for data cleaning, validation, and analysis.</li>
+          <li>Analyzed LMS & Navigator platform performance.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Junior Data Analyst (Training)</h3>
+        <p class="muted">Violet Infosystems Pvt. Ltd. | May 2024 – Nov 2024</p>
+        <ul>
+          <li>Hands-on training in SQL, Python, Power BI & Excel.</li>
+          <li>Worked on live projects involving sales analytics.</li>
+        </ul>
+      </div>
+    </div>
+  </section>  <!-- Projects -->  <section id="projects">
+    <h2 class="text-primary" style="color:var(--primary)!important">Projects</h2>
+    <div class="projects-grid">
+      <div class="card">
         <h3>🎵 Digital Music Store – SQL</h3>
         <p class="muted">Advanced SQL queries to uncover music store insights.</p>
-        <img src="https://picsum.photos/600/350.webp?random=1" class="project-img mt-2" loading="lazy" alt="Music Store Project">
-        <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank">View on GitHub</a>
+        <img src="https://picsum.photos/800/500.webp?random=11" class="project-img mt-2" loading="lazy" width="800" height="500" alt="Music Store SQL Project Thumbnail" />
+        <a class="mt-2 d-inline-block" href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🛍 Diwali Sales Analysis – Python</h3>
+        <p class="muted">EDA on sales data using Pandas & Seaborn.</p>
+        <img src="https://picsum.photos/800/500.webp?random=12" class="project-img mt-2" loading="lazy" width="800" height="500" alt="Diwali Sales Analysis Project Thumbnail" />
+        <a class="mt-2 d-inline-block" href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📊 Madhav Store Dashboard – Power BI</h3>
+        <p class="muted">Interactive sales dashboard with KPIs.</p>
+        <img src="https://picsum.photos/800/500.webp?random=13" class="project-img mt-2" loading="lazy" width="800" height="500" alt="Madhav Store Dashboard Project Thumbnail" />
+        <a class="mt-2 d-inline-block" href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🏬 Super Store Dashboard – Power BI</h3>
+        <p class="muted">Visualized Super Store sales performance.</p>
+        <img src="https://picsum.photos/800/500.webp?random=14" class="project-img mt-2" loading="lazy" width="800" height="500" alt="Super Store Dashboard Project Thumbnail" />
+        <a class="mt-2 d-inline-block" href="https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard" target="_blank" rel="noopener">View on GitHub</a>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h3>📊 Sales Dashboard – Power BI</h3>
-        <p class="muted">Interactive dashboard for analyzing regional sales trends.</p>
-        <img src="https://picsum.photos/600/350.webp?random=2" class="project-img mt-2" loading="lazy" alt="Sales Dashboard Project">
-        <a href="https://github.com/SiddheshSRane" target="_blank">View on GitHub</a>
+  </section>  <!-- Certifications -->  <section id="certifications">
+    <h2 class="text-primary" style="color:var(--primary)!important">Certifications</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" width="28" height="28" class="me-2 img-fluid" loading="lazy" alt="HackerRank Logo" />
+            <h3 class="h6 mb-0">SQL (Basic)</h3>
+          </div>
+          <p class="muted mb-0">Issued by HackerRank</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://i.ibb.co/zrNPh2K/trycatch-logo.png" width="28" height="28" class="me-2 img-fluid" loading="lazy" alt="TryCatch Classes Logo" />
+            <h3 class="h6 mb-0">Certified Data Scientist</h3>
+          </div>
+          <p class="muted mb-2">Issued by TryCatch Classes</p>
+          <a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm mt-3">View Certificate</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Accenture.svg" width="28" height="28" class="me-2 img-fluid" loading="lazy" alt="Accenture Logo" />
+            <h3 class="h6 mb-0">Data Analytics Simulation</h3>
+          </div>
+          <p class="muted mb-0">Issued by Accenture via Forage</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" width="28" height="28" class="me-2 img-fluid" loading="lazy" alt="Udemy Logo" />
+            <h3 class="h6 mb-0">SQL & Database Bootcamp</h3>
+          </div>
+          <p class="muted mb-2">Issued by Udemy</p>
+          <a href="https://www.udemy.com/certificate/UC-de1f1f38-1a83-4c12-99c0-051c8d22da49/" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm mt-3">View Certificate</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" width="28" height="28" class="me-2 img-fluid" loading="lazy" alt="Udemy Logo" />
+            <h3 class="h6 mb-0">Data Analyst Bootcamp</h3>
+          </div>
+          <p class="muted mb-2">Issued by Udemy</p>
+          <a href="https://www.udemy.com/certificate/UC-087d7c04-ac24-410f-aa8c-24e40af1e409/" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm mt-3">View Certificate</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Certifications -->
-<section id="certifications">
-  <h2>Certifications</h2>
-  <div class="d-flex flex-wrap gap-3">
-    <div class="skill-card d-flex align-items-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" 
-           class="img-fluid me-2" width="28" height="28" loading="lazy" alt="HackerRank Logo">
-      <span>HackerRank SQL (Basic & Intermediate)</span>
+  </section>  <!-- Education -->  <section id="education">
+    <h2 class="text-primary" style="color:var(--primary)!important">Education</h2>
+    <div class="grid skills-grid">
+      <div class="card"><h3>B.E. Electronics Engineering</h3><p class="muted">Atharva College of Engineering (2019 – 2022)</p></div>
+      <div class="card"><h3>Diploma</h3><p class="muted">Thakur Polytechnic (2017 – 2019)</p></div>
     </div>
-    <div class="skill-card d-flex align-items-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" 
-           class="img-fluid me-2" width="28" height="28" loading="lazy" alt="Udemy Logo">
-      <span>Udemy – Python & Power BI</span>
+  </section>  <!-- Contact -->  <section id="contact">
+    <h2 class="text-primary" style="color:var(--primary)!important">Get in Touch</h2>
+    <p class="muted">I’d love to hear from you — project, job opportunity, or just a chat!</p>
+    <div class="contact-links">
+      <a class="contact-btn" href="mailto:siddhesh.sh.rane@gmail.com">Email</a>
+      <a class="contact-btn" href="tel:+917506310919">Call</a>
+      <a class="contact-btn" href="https://github.com/SiddheshSRane" target="_blank" rel="noopener">GitHub</a>
+      <a class="contact-btn" href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="contact-btn" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO" target="_blank" rel="noopener">Resume</a>
     </div>
-  </div>
-</section>
+  </section>  <footer>
+    <p>© 2025 Siddhesh Rane. Built with ❤️</p>
+  </footer>  <!-- Scripts -->  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  <script>
+    // ===== Resume Download =====
+    function downloadResume(){
+      window.open("https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO","_blank");
+    }
 
-<!-- Education -->
-<section id="education">
-  <h2>Education</h2>
-  <p><strong>B.Sc. in Computer Science</strong> – University of Mumbai (2022)</p>
-</section>
+    // ===== Dark Mode: auto (prefers-color-scheme) + manual toggle with 3 states (light/dark/auto) =====
+    (function(){
+      const root = document.documentElement;
+      const media = window.matchMedia('(prefers-color-scheme: dark)');
+      const saved = localStorage.getItem('theme') || 'auto';
 
-<!-- Contact -->
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact-links">
-    <a href="mailto:siddhesh@example.com" class="btn btn-primary contact-btn">Email</a>
-    <a href="https://linkedin.com/in/siddheshsrane" target="_blank" class="btn btn-outline-primary contact-btn">LinkedIn</a>
-    <a href="https://github.com/SiddheshSRane" target="_blank" class="btn btn-dark contact-btn">GitHub</a>
-  </div>
-</section>
+      function apply(mode){
+        const dark = mode === 'dark' || (mode === 'auto' && media.matches);
+        root.classList.toggle('dark', dark);
+        updateToggleIcon(mode);
+      }
+      function updateToggleIcon(mode){
+        const btn = document.getElementById('themeToggle');
+        if(!btn) return;
+        btn.title = `Theme: ${mode}`;
+        btn.innerHTML = mode === 'light' ? '<i class="bi bi-sun"></i>' : mode === 'dark' ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-circle-half"></i>';
+      }
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  function downloadResume(){
-    window.open("Siddhesh_Rane_Resume.pdf","_blank");
-  }
-</script>
-</body>
+      apply(saved);
+      media.addEventListener('change', () => apply(localStorage.getItem('theme') || 'auto'));
+
+      // Create floating toggle button
+      const toggle = document.createElement('button');
+      toggle.id = 'themeToggle';
+      toggle.className = 'theme-toggle';
+      document.body.appendChild(toggle);
+      updateToggleIcon(saved);
+
+      toggle.addEventListener('click', () => {
+        const current = localStorage.getItem('theme') || 'auto';
+        const next = current === 'light' ? 'dark' : current === 'dark' ? 'auto' : 'light';
+        localStorage.setItem('theme', next);
+        apply(next);
+      });
+    })();
+  </script></body>
 </html>
