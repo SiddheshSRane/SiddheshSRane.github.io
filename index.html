@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Siddhesh Rane | Data Analyst Portfolio</title>
-  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel.">
+  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
+  <meta name="theme-color" content="#f9fafb" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- You can change the font to your preference -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* --- Base --- */
     :root{
       --bg: #f9fafb;
       --heading: #1f2937;
@@ -16,168 +19,272 @@
       --muted-border: #e5e7eb;
       --footer-text: #6b7280;
       --card-bg: #ffffff;
-      --radius: 8px;
+      --radius: 10px;
+      --max-width: 980px;
+      --focus: 3px;
     }
 
-    * { box-sizing: border-box; }
+    /* Reset-ish */
+    *, *::before, *::after { box-sizing: border-box; }
+    html,body { height: 100%; }
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       line-height: 1.6;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* --- Header / Nav --- */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+
+    /* Accessibility - visible focus */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 4px solid rgba(37,99,235,0.12);
+      box-shadow: 0 0 0 var(--focus) rgba(37,99,235,0.18);
+      border-radius: 6px;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: -999px;
+      background: #111;
+      color: #fff;
+      padding: 8px 12px;
+      z-index: 100;
+      border-radius: 6px;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+    }
+
+    /* Header / nav */
     header {
-      background-color: var(--card-bg);
+      background: var(--card-bg);
       border-bottom: 1px solid var(--muted-border);
-      padding: 14px 32px;
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 60;
+      width: 100%;
+      backdrop-filter: blur(6px);
+    }
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
+      padding: 12px 20px;
     }
-    header h2 {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand h1 {
       margin: 0;
+      font-size: 16px;
       color: var(--heading);
-      font-size: 18px;
+      font-weight: 700;
       letter-spacing: 0.2px;
     }
-    nav {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 500;
-      padding: 6px 8px;
-      border-radius: 6px;
-    }
-    nav a:hover { color: var(--accent-hover); background: rgba(37,99,235,0.06); }
 
-    /* --- Hero --- */
-    .hero {
-      padding: 48px 32px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-    }
-    .hero h1 {
-      margin: 0 0 8px 0;
-      color: var(--heading);
-      font-size: 34px;
-    }
-    .hero p.lead {
-      margin: 0 0 18px 0;
-      color: var(--text);
-      font-size: 16px;
-    }
-    .hero .cta {
+    /* header actions (always visible CTAs) */
+    .header-actions {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
-
-    /* --- Buttons --- */
     .btn {
-      display: inline-block;
-      background-color: var(--accent);
-      color: #fff;
-      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 14px;
       border-radius: 8px;
-      text-decoration: none;
       font-weight: 600;
-      transition: background 0.18s ease;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
     }
-    .btn:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
-
-    .secondary {
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-outline {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--muted-border);
-      font-weight: 600;
-      padding: 9px 16px;
     }
-    .secondary a { color: inherit; text-decoration: none; }
 
-    /* --- Sections --- */
-    main { max-width: 980px; margin: 0 auto; }
-    section {
-      background: transparent;
-      padding: 36px 32px;
-      border-bottom: 1px solid var(--muted-border);
+    /* main layout */
+    main {
+      max-width: var(--max-width);
+      margin: 18px auto;
+      padding: 0 20px 48px;
     }
-    h2 {
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 30px 0;
+    }
+    .hero h2 {
+      margin: 0 0 8px 0;
       color: var(--heading);
-      margin: 0 0 10px 0;
-      font-size: 22px;
+      font-size: 32px;
+      line-height: 1.05;
     }
-    h3 {
-      color: var(--heading);
-      margin: 12px 0 8px 0;
-      font-size: 16px;
-    }
-    p, li {
-      color: var(--text);
+    .lead {
       margin: 0;
+      color: var(--text);
       font-size: 15px;
     }
-    ul { margin: 8px 0 0 18px; padding: 0; }
+    .hero-meta {
+      text-align: right;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .chip {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--muted-border);
+      background: transparent;
+      font-weight: 600;
+    }
 
-    /* --- Two-column lists for skills/projects --- */
+    /* Sections */
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--muted-border);
+    }
+    h3 { margin: 0 0 10px 0; color: var(--heading); font-size: 18px; }
+    p, li { margin: 0 0 8px 0; color: var(--text); font-size: 15px; }
+    ul { margin: 6px 0 0 18px; padding: 0; }
+
+    /* Grid for skills */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
       margin-top: 12px;
     }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--muted-border);
+      padding: 14px;
       border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 2px 6px rgba(16,24,40,0.02);
+      box-shadow: 0 2px 8px rgba(16,24,40,0.02);
     }
 
-    /* --- Contact / Footer --- */
-    .contact-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      margin-right: 10px;
-    }
+    /* simple project list spacing */
+    .projects li { margin-bottom: 12px; }
+
+    /* contact links */
+    .contact-links a { margin-right: 10px; font-weight: 600; color: var(--accent); }
+    .muted-sep { color: var(--muted-border); margin: 0 8px; }
+
+    /* Footer */
     footer {
       background: var(--card-bg);
       border-top: 1px solid var(--muted-border);
-      padding: 20px 32px;
+      padding: 18px 20px;
       text-align: center;
       color: var(--footer-text);
       font-size: 14px;
     }
 
-    /* --- Responsive --- */
-    @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; text-align: left; }
-      .grid-2 { grid-template-columns: 1fr; }
-      nav { display: none; }
+    /* Mobile nav: hidden nav that toggles */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      padding: 6px;
+      cursor: pointer;
     }
+    .nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; margin-top: 12px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .header-inner { padding: 12px 14px; }
+    }
+
+    /* Mobile slide-down nav */
+    .mobile-nav {
+      display: none;
+      background: var(--card-bg);
+      border-top: 1px solid var(--muted-border);
+      width: 100%;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 12px 16px; border-bottom: 1px dashed var(--muted-border); color: var(--text); text-decoration: none; }
+    .mobile-nav a:hover { background: rgba(37,99,235,0.04); color: var(--accent); }
+
+    /* small helpers */
+    .muted { color: var(--footer-text); font-size: 14px; }
+    .spaced { margin-top: 12px; }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- Header / Navigation -->
   <header>
-    <h2><strong>Siddhesh Rane</strong></h2>
-    <nav aria-label="Primary navigation">
+    <div class="header-inner">
+      <div class="brand" aria-hidden="false">
+        <h1>Siddhesh Rane</h1>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Header actions + mobile toggle -->
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#projects" aria-label="Explore projects">Explore</a>
+        <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO"
+           target="_blank" rel="noopener noreferrer" aria-label="Download resume">📄 Resume</a>
+
+        <!-- mobile nav toggle -->
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile nav (hidden by default) -->
+    <div id="mobileNav" class="mobile-nav" role="menu" aria-hidden="true">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -186,45 +293,43 @@
       <a href="#certifications">Certifications</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
-    </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Hero -->
     <section id="home" class="hero" aria-labelledby="home-heading">
       <div>
-        <h1 id="home-heading">Hi, I’m Siddhesh Rane</h1>
+        <h2 id="home-heading">Hi, I’m Siddhesh Rane</h2>
         <p class="lead">Junior Data Analyst • SQL • Python • Excel • Power BI</p>
-        <p style="margin-top:14px;">
-          <a class="btn" href="#projects">Explore</a>
-          <a class="btn" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO" style="margin-left:10px;">📄 Resume</a>
+
+        <p class="spaced">
+          <a class="btn btn-primary" href="#projects">Explore</a>
+          <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO"
+             target="_blank" rel="noopener noreferrer" style="margin-left:10px;">📄 Resume</a>
         </p>
       </div>
 
-      <div style="text-align:right;">
-        <p style="margin:0; color:var(--text); font-size:14px;">📍 Mumbai, India</p>
-        <p style="margin:6px 0 0 0; color:var(--text); font-size:14px;">🎓 B.E. Electronics Engg.</p>
-        <p style="margin:10px 0 0 0;"><span class="secondary" style="display:inline-block;">💼 Open to Data Analyst Roles</span></p>
+      <div class="hero-meta" aria-hidden="false">
+        <p style="margin:0;">📍 Mumbai, India</p>
+        <p style="margin:6px 0 0 0;">🎓 B.E. Electronics Engg.</p>
+        <p style="margin:12px 0 0 0;"><span class="chip">💼 Open to Data Analyst Roles</span></p>
       </div>
     </section>
 
     <!-- About -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p style="margin-top:8px;">
-        I’m an aspiring Data Analyst passionate about transforming raw data into actionable insights.
-        Skilled in SQL, Python, Excel, and Power BI, I specialize in building dashboards, performing data analysis,
-        and supporting data-driven decision-making.
-      </p>
+    <section id="about" aria-labelledby="about-heading">
+      <h3 id="about-heading">About Me</h3>
+      <p>I’m an aspiring Data Analyst passionate about transforming raw data into actionable insights. Skilled in SQL, Python, Excel, and Power BI, I specialize in building dashboards, performing data analysis, and supporting data-driven decision-making.</p>
     </section>
 
     <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
+    <section id="skills" aria-labelledby="skills-heading">
+      <h3 id="skills-heading">Skills</h3>
 
-      <div class="grid-2" style="margin-top:12px;">
-        <div class="card">
-          <h3>💻 Programming & Data</h3>
+      <div class="grid-2 spaced">
+        <div class="card" aria-labelledby="prog-heading">
+          <h4 id="prog-heading">💻 Programming &amp; Data</h4>
           <ul>
             <li>SQL</li>
             <li>Python</li>
@@ -238,8 +343,8 @@
           </ul>
         </div>
 
-        <div class="card">
-          <h3>📊 Business Intelligence</h3>
+        <div class="card" aria-labelledby="bi-heading">
+          <h4 id="bi-heading">📊 Business Intelligence</h4>
           <ul>
             <li>Power BI</li>
             <li>DAX</li>
@@ -251,19 +356,19 @@
           </ul>
         </div>
 
-        <div class="card">
-          <h3>🗄️ Databases</h3>
+        <div class="card" aria-labelledby="db-heading">
+          <h4 id="db-heading">🗄️ Databases</h4>
           <ul>
             <li>MySQL</li>
             <li>PostgreSQL</li>
           </ul>
         </div>
 
-        <div class="card">
-          <h3>🚀 Core Competencies</h3>
+        <div class="card" aria-labelledby="core-heading">
+          <h4 id="core-heading">🚀 Core Competencies</h4>
           <ul>
-            <li>Data Cleaning & Validation</li>
-            <li>Data Visualization & Storytelling</li>
+            <li>Data Cleaning &amp; Validation</li>
+            <li>Data Visualization &amp; Storytelling</li>
             <li>Business Insights</li>
             <li>Problem Solving</li>
             <li>Communication</li>
@@ -273,11 +378,11 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience" aria-labelledby="experience-heading">
+      <h3 id="experience-heading">Experience</h3>
 
-      <h3>Junior Data Analyst</h3>
-      <p style="margin:4px 0 6px 0; color:var(--text);"><strong>Violet Infosystems Pvt. Ltd.</strong> | Nov 2024 – Present</p>
+      <h4 style="margin-top:8px;">Junior Data Analyst</h4>
+      <p class="muted" style="margin:6px 0;"><strong>Violet Infosystems Pvt. Ltd.</strong> | Nov 2024 – Present</p>
       <ul>
         <li>Created Power BI dashboards for sales & operational insights.</li>
         <li>Automated Excel reports, reducing manual effort.</li>
@@ -285,8 +390,8 @@
         <li>Analyzed LMS & Navigator platform performance.</li>
       </ul>
 
-      <h3 style="margin-top:18px;">Junior Data Analyst (Training)</h3>
-      <p style="margin:4px 0 6px 0; color:var(--text);"><strong>Violet Infosystems Pvt. Ltd.</strong> | May 2024 – Nov 2024</p>
+      <h4 style="margin-top:16px;">Junior Data Analyst (Training)</h4>
+      <p class="muted" style="margin:6px 0;"><strong>Violet Infosystems Pvt. Ltd.</strong> | May 2024 – Nov 2024</p>
       <ul>
         <li>Hands-on training in SQL, Python, Power BI & Excel.</li>
         <li>Worked on live projects involving sales analytics.</li>
@@ -294,47 +399,48 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul style="margin-top:8px;">
-        <li>🎵 <strong>Digital Music Store – SQL</strong> — Advanced SQL queries to uncover music store insights. <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL">View on GitHub</a></li>
-        <li style="margin-top:8px;">🛍 <strong>Diwali Sales Analysis – Python</strong> — Performed EDA on sales data using Pandas & Seaborn. <a href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis">View on GitHub</a></li>
-        <li style="margin-top:8px;">📊 <strong>Madhav Store Dashboard – Power BI</strong> — Built interactive sales dashboard with KPIs. <a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard">View on GitHub</a></li>
-        <li style="margin-top:8px;">🏬 <strong>Super Store Dashboard – Power BI</strong> — Visualized Super Store sales performance. <a href="https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard">View on GitHub</a></li>
+    <section id="projects" aria-labelledby="projects-heading">
+      <h3 id="projects-heading">Projects</h3>
+      <ul class="projects">
+        <li>🎵 <strong>Digital Music Store – SQL</strong> — Advanced SQL queries to uncover music store insights. <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>🛍 <strong>Diwali Sales Analysis – Python</strong> — Performed EDA on sales data using Pandas &amp; Seaborn. <a href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>📊 <strong>Madhav Store Dashboard – Power BI</strong> — Built interactive sales dashboard with KPIs. <a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>🏬 <strong>Super Store Dashboard – Power BI</strong> — Visualized Super Store sales performance. <a href="https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
       </ul>
     </section>
 
     <!-- Certifications -->
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul style="margin-top:8px;">
+    <section id="certifications" aria-labelledby="certifications-heading">
+      <h3 id="certifications-heading">Certifications</h3>
+      <ul>
         <li>SQL (Basic) — Issued by HackerRank</li>
-        <li style="margin-top:6px;">Certified Data Scientist — Issued by TryCatch Classes (<a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view?usp=sharing">View Certificate</a>)</li>
-        <li style="margin-top:6px;">Data Analytics Simulation — Issued by Accenture via Forage</li>
-        <li style="margin-top:6px;">SQL & Database Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-de1f1f38-1a83-4c12-99c0-051c8d22da49/">View Certificate</a>)</li>
-        <li style="margin-top:6px;">Data Analyst Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-087d7c04-ac24-410f-aa8c-24e40af1e409/">View Certificate</a>)</li>
+        <li>Certified Data Scientist — Issued by TryCatch Classes (<a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
+        <li>Data Analytics Simulation — Issued by Accenture via Forage</li>
+        <li>SQL &amp; Database Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-de1f1f38-1a83-4c12-99c0-051c8d22da49/" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
+        <li>Data Analyst Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-087d7c04-ac24-410f-aa8c-24e40af1e409/" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
       </ul>
     </section>
 
     <!-- Education -->
-    <section id="education">
-      <h2>Education</h2>
-      <p style="margin-top:8px;"><strong>B.E. Electronics Engineering</strong> — Atharva College of Engineering (2019 – 2022)</p>
+    <section id="education" aria-labelledby="education-heading">
+      <h3 id="education-heading">Education</h3>
+      <p><strong>B.E. Electronics Engineering</strong> — Atharva College of Engineering (2019 – 2022)</p>
       <p style="margin-top:8px;"><strong>Diploma</strong> — Thakur Polytechnic (2017 – 2019)</p>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <p style="margin-top:8px;">I’d love to hear from you — project, job opportunity, or just a chat!</p>
-      <p class="contact-links" style="margin-top:10px;">
+    <section id="contact" aria-labelledby="contact-heading">
+      <h3 id="contact-heading">Get in Touch</h3>
+      <p>I’d love to hear from you — project, job opportunity, or just a chat!</p>
+
+      <p class="spaced contact-links" aria-label="Contact links">
         <a href="mailto:youremail@example.com">Email</a>
-        <span style="color:var(--muted-border)">|</span>
+        <span class="muted-sep">|</span>
         <a href="tel:+91XXXXXXXXXX">Call</a>
-        <span style="color:var(--muted-border)">|</span>
-        <a href="https://github.com/SiddheshSRane">GitHub</a>
-        <span style="color:var(--muted-border)">|</span>
-        <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/">LinkedIn</a>
+        <span class="muted-sep">|</span>
+        <a href="https://github.com/SiddheshSRane" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="muted-sep">|</span>
+        <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
     </section>
   </main>
@@ -343,5 +449,31 @@
     © 2025 Siddhesh Rane. Built with ❤️
   </footer>
 
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const btn = document.getElementById('navToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      if (!btn || !mobileNav) return;
+
+      btn.addEventListener('click', function () {
+        const open = mobileNav.classList.toggle('open');
+        mobileNav.setAttribute('aria-hidden', !open);
+        btn.setAttribute('aria-expanded', open);
+        // change button label (keeps things simple instead of icons)
+        btn.textContent = open ? '✕' : '☰';
+      });
+
+      // Close mobile nav when a link is clicked (mobile)
+      mobileNav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          mobileNav.classList.remove('open');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.textContent = '☰';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
