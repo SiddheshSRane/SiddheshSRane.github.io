@@ -1,79 +1,400 @@
-import React, { useState, FormEvent } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siddhesh Rane | Data Analyst Portfolio</title>
+  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
+  <meta name="theme-color" content="#f9fafb" />
+  <meta name="author" content="Siddhesh Rane" />
+  <link rel="canonical" href="https://yourdomain.com/" />
 
-// Icon components
-const IconMenu: React.FC<{ className?: string }> = ({ className = 'h-6 w-6' }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M3 12h18M3 6h18M3 18h18" />
-  </svg>
-);
+  <!-- Open Graph -->
+  <meta property="og:title" content="Siddhesh Rane | Data Analyst Portfolio" />
+  <meta property="og:description" content="Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:image" content="https://yourdomain.com/preview.png" />
 
-const IconClose: React.FC<{ className?: string }> = ({ className = 'h-6 w-6' }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M18 6L6 18M6 6l12 12" />
-  </svg>
-);
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Siddhesh Rane | Data Analyst Portfolio" />
+  <meta name="twitter:description" content="Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
+  <meta name="twitter:image" content="https://yourdomain.com/preview.png" />
 
-const IconSun: React.FC<{ className?: string }> = ({ className = 'h-5 w-5' }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="4" />
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-  </svg>
-);
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
 
-const IconMoon: React.FC<{ className?: string }> = ({ className = 'h-5 w-5' }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-  </svg>
-);
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
 
-interface FormStatus {
-  type: 'error' | 'success';
-  text: string;
-}
-
-const App: React.FC = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(false);
-  const [formStatus, setFormStatus] = useState<FormStatus | null>(null);
-
-  const projects = [
-    { title: 'Digital Music Store — SQL', desc: 'Advanced SQL queries to uncover sales & inventory insights.', url: 'https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL' },
-    { title: 'Diwali Sales Analysis — Python', desc: 'EDA with Pandas & Seaborn on seasonal sales.', url: 'https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis' },
-    { title: 'Madhav Store Dashboard — Power BI', desc: 'Interactive sales dashboard with KPIs.', url: 'https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard' },
-    { title: 'Super Store Dashboard — Power BI', desc: 'Superstore performance dashboards.', url: 'https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard' },
-  ];
-
-  function handleContact(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
-    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
-
-    if (!name || !email || !message) {
-      setFormStatus({ type: 'error', text: 'Please fill all fields.' });
-      return;
+  <style>
+    :root{
+      --bg: #f9fafb;
+      --heading: #1f2937;
+      --text: #374151;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --muted-border: #e5e7eb;
+      --footer-text: #6b7280;
+      --card-bg: #ffffff;
+      --radius: 10px;
+      --max-width: 980px;
+      --focus: 3px;
     }
-
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      setFormStatus({ type: 'error', text: 'Please enter a valid email.' });
-      return;
+    *, *::before, *::after { box-sizing: border-box; }
+    html,body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 4px solid rgba(37,99,235,0.12);
+      box-shadow: 0 0 0 var(--focus) rgba(37,99,235,0.18);
+      border-radius: 6px;
+    }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: -999px;
+      background: #111;
+      color: #fff;
+      padding: 8px 12px;
+      z-index: 100;
+      border-radius: 6px;
+    }
+    .skip-link:focus { left: 12px; top: 12px; }
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--muted-border);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      width: 100%;
+      backdrop-filter: blur(6px);
+    }
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 20px;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 16px;
+      color: var(--heading);
+      font-weight: 700;
+    }
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--muted-border);
+    }
+    main {
+      max-width: var(--max-width);
+      margin: 18px auto;
+      padding: 0 20px 48px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 30px 0;
+    }
+    .hero h2 {
+      margin: 0 0 8px 0;
+      color: var(--heading);
+      font-size: 32px;
+      line-height: 1.05;
+    }
+    .lead { margin: 0; font-size: 15px; }
+    .hero-meta { text-align: right; font-size: 14px; }
+    .chip {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--muted-border);
+      font-weight: 600;
+    }
+    section { padding: 28px 0; border-bottom: 1px solid var(--muted-border); }
+    h2 { margin: 0 0 10px 0; color: var(--heading); font-size: 20px; }
+    h3 { margin: 0 0 8px 0; font-size: 16px; }
+    p, li { margin: 0 0 8px 0; font-size: 15px; }
+    ul { margin: 6px 0 0 18px; padding: 0; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--muted-border);
+      padding: 14px;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(16,24,40,0.02);
+    }
+    .projects li { margin-bottom: 12px; }
+    .contact-links a { margin-right: 10px; font-weight: 600; }
+    footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--muted-border);
+      padding: 18px 20px;
+      text-align: center;
+      color: var(--footer-text);
+      font-size: 14px;
+    }
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .nav { display: flex; gap: 12px; align-items: center; }
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; margin-top: 12px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .header-inner { padding: 12px 14px; }
+    }
+    .mobile-nav {
+      display: none;
+      background: var(--card-bg);
+      border-top: 1px solid var(--muted-border);
+      width: 100%;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      padding: 12px 16px;
+      border-bottom: 1px dashed var(--muted-border);
+      text-decoration: none;
+    }
+    .mobile-nav a:hover { background: rgba(37,99,235,0.04); color: var(--accent); }
+    .muted { color: var(--footer-text); font-size: 14px; }
+    .spaced { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    setFormStatus({ type: 'success', text: 'Thanks — message sent (demo).' });
-    form.reset();
-    setTimeout(() => setFormStatus(null), 4000);
-  }
-
-  return (
-    <div className={dark ? 'dark' : ''}>
-      {/* ... keep the rest of your JSX as it was ... */}
+  <header>
+    <div class="header-inner">
+      <div class="brand"><h1>Siddhesh Rane</h1></div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#projects">Explore</a>
+        <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO"
+           target="_blank" rel="noopener noreferrer">📄 Resume</a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle navigation">☰</button>
+      </div>
     </div>
-  );
-};
+    <div id="mobileNav" class="mobile-nav" role="menu" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
 
-export default App;
+  <main id="main-content" tabindex="-1">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div>
+        <h2>Hi, I’m Siddhesh Rane</h2>
+        <p class="lead">Junior Data Analyst • SQL • Python • Excel • Power BI</p>
+        <p class="spaced">
+          <a class="btn btn-primary" href="#projects">Explore</a>
+          <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO" target="_blank" rel="noopener noreferrer">📄 Resume</a>
+        </p>
+      </div>
+      <div class="hero-meta">
+        <p style="margin:0;">📍 Mumbai, India</p>
+        <p style="margin:6px 0 0 0;">🎓 B.E. Electronics Engg.</p>
+        <p style="margin:12px 0 0 0;"><span class="chip">💼 Open to Data Analyst Roles</span></p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m an aspiring Data Analyst passionate about transforming raw data into actionable insights. Skilled in SQL, Python, Excel, and Power BI, I specialize in building dashboards, performing data analysis, and supporting data-driven decision-making.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid-2 spaced">
+        <div class="card">
+          <h3>💻 Programming &amp; Data</h3>
+          <ul>
+            <li>SQL</li><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li><li>Scikit-learn</li><li>Jupyter Notebook</li><li>Git / GitHub</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📊 Business Intelligence</h3>
+          <ul>
+            <li>Power BI</li><li>DAX</li><li>Data Modeling</li><li>Excel</li><li>Power Query</li><li>Pivot Tables</li><li>Google Sheets</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🗄️ Databases</h3>
+          <ul>
+            <li>MySQL</li><li>PostgreSQL</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🚀 Core Competencies</h3>
+          <ul>
+            <li>Data Cleaning &amp; Validation</li><li>Data Visualization &amp; Storytelling</li><li>Business Insights</li><li>Problem Solving</li><li>Communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <h3>Junior Data Analyst</h3>
+      <p class="muted"><strong>Violet Infosystems Pvt. Ltd.</strong> | Nov 2024 – Present</p>
+      <ul>
+        <li>Created Power BI dashboards for sales & operational insights.</li>
+        <li>Automated Excel reports, reducing manual effort.</li>
+        <li>Wrote SQL queries for data cleaning, validation, and analysis.</li>
+        <li>Analyzed LMS & Navigator platform performance.</li>
+      </ul>
+      <h3>Junior Data Analyst (Training)</h3>
+      <p class="muted"><strong>Violet Infosystems Pvt. Ltd.</strong> | May 2024 – Nov 2024</p>
+      <ul>
+        <li>Hands-on training in SQL, Python, Power BI & Excel.</li>
+        <li>Worked on live projects involving sales analytics.</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="projects">
+        <li>🎵 <strong>Digital Music Store – SQL</strong> — Advanced SQL queries to uncover music store insights. <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>🛍 <strong>Diwali Sales Analysis – Python</strong> — Performed EDA on sales data using Pandas &amp; Seaborn. <a href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>📊 <strong>Madhav Store Dashboard – Power BI</strong> — Built interactive sales dashboard with KPIs. <a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li>🏬 <strong>Super Store Dashboard – Power BI</strong> — Visualized Super Store sales performance. <a href="https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+      </ul>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li>SQL (Basic) — Issued by HackerRank</li>
+        <li>Certified Data Scientist — Issued by TryCatch Classes (<a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
+        <li>Data Analytics Simulation — Issued by Accenture via Forage</li>
+        <li>SQL &amp; Database Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-de1f1f38-1a83-4c12-99c0-051c8d22da49/" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
+        <li>Data Analyst Bootcamp — Issued by Udemy (<a href="https://www.udemy.com/certificate/UC-087d7c04-ac24-410f-aa8c-24e40af1e409/" target="_blank" rel="noopener noreferrer">View Certificate</a>)</li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>B.E. Electronics Engineering</strong> — Atharva College of Engineering (2019 – 2022)</p>
+      <p style="margin-top:8px;"><strong>Diploma</strong> — Thakur Polytechnic (2017 – 2019)</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Get in Touch</h2>
+      <p>I’d love to hear from you — project, job opportunity, or just a chat!</p>
+      <p class="spaced contact-links">
+        <a href="mailto:siddhesh@example.com">Email</a>
+        <span class="muted-sep">|</span>
+        <a href="tel:+919876543210">Call</a>
+        <span class="muted-sep">|</span>
+        <a href="https://github.com/SiddheshSRane" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="muted-sep">|</span>
+        <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>© 2025 Siddhesh Rane. Built with ❤️</footer>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('navToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      if (!btn || !mobileNav) return;
+      btn.addEventListener('click', function () {
+        const open = mobileNav.classList.toggle('open');
+        mobileNav.setAttribute('aria-hidden', !open);
+        btn.setAttribute('aria-expanded', open);
+        btn.textContent = open ? '✕' : '☰';
+      });
+      mobileNav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          mobileNav.classList.remove('open');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.textContent = '☰';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
