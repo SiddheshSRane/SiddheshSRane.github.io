@@ -1,303 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Siddhesh Rane | Data Analyst Portfolio</title>
-  <meta name="description" content="Siddhesh Rane – Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
-  <meta name="theme-color" content="#f9fafb" />
-  <meta name="author" content="Siddhesh Rane" />
-  <link rel="canonical" href="https://yourdomain.com/" />
+import React, { useState, FormEvent } from 'react';
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+// Icon components
+const IconMenu: React.FC<{ className?: string }> = ({ className = 'h-6 w-6' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 12h18M3 6h18M3 18h18" />
+  </svg>
+);
 
-  <link rel="icon" href="/favicon.ico" />
+const IconClose: React.FC<{ className?: string }> = ({ className = 'h-6 w-6' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M18 6L6 18M6 6l12 12" />
+  </svg>
+);
 
-  <style>
-    :root {
-      --bg: #f9fafb;
-      --heading: #111827;
-      --text: #374151;
-      --accent: #2563eb;
-      --accent-hover: #1d4ed8;
-      --muted-border: #e5e7eb;
-      --footer-text: #6b7280;
-      --card-bg: #ffffff;
-      --radius: 12px;
-      --max-width: 1080px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+const IconSun: React.FC<{ className?: string }> = ({ className = 'h-5 w-5' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+);
+
+const IconMoon: React.FC<{ className?: string }> = ({ className = 'h-5 w-5' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+  </svg>
+);
+
+interface FormStatus {
+  type: 'error' | 'success';
+  text: string;
+}
+
+const App: React.FC = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [formStatus, setFormStatus] = useState<FormStatus | null>(null);
+
+  const projects = [
+    { title: 'Digital Music Store — SQL', desc: 'Advanced SQL queries to uncover sales & inventory insights.', url: 'https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL' },
+    { title: 'Diwali Sales Analysis — Python', desc: 'EDA with Pandas & Seaborn on seasonal sales.', url: 'https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis' },
+    { title: 'Madhav Store Dashboard — Power BI', desc: 'Interactive sales dashboard with KPIs.', url: 'https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard' },
+    { title: 'Super Store Dashboard — Power BI', desc: 'Superstore performance dashboards.', url: 'https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard' },
+  ];
+
+  function handleContact(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+
+    if (!name || !email || !message) {
+      setFormStatus({ type: 'error', text: 'Please fill all fields.' });
+      return;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      setFormStatus({ type: 'error', text: 'Please enter a valid email.' });
+      return;
     }
 
-    a { color: var(--accent); text-decoration: none; transition: color .2s ease; }
-    a:hover { color: var(--accent-hover); }
+    setFormStatus({ type: 'success', text: 'Thanks — message sent (demo).' });
+    form.reset();
+    setTimeout(() => setFormStatus(null), 4000);
+  }
 
-    /* Header */
-    header {
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid var(--muted-border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-    }
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 14px 20px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 20px;
-    }
-    .brand h1 { font-size: 20px; font-weight: 700; color: var(--heading); white-space: nowrap; }
-    .nav { display: flex; justify-content: center; gap: 24px; font-weight: 500; flex-wrap: wrap; }
-    .header-actions { display: flex; gap: 12px; align-items: center; }
-
-    /* Buttons */
-    .btn {
-      padding: 9px 16px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
-    .btn-outline { border: 1px solid var(--muted-border); color: var(--text); background: transparent; }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 30px;
-      padding: 60px 0;
-      background: linear-gradient(135deg, #f0f4ff, #ffffff);
-      border-radius: var(--radius);
-    }
-    .hero h2 { font-size: 36px; font-weight: 700; color: var(--heading); margin-bottom: 10px; }
-    .lead { font-size: 16px; color: #4b5563; }
-    .hero-meta { text-align: right; font-size: 14px; color: #4b5563; }
-    .chip {
-      display: inline-block;
-      padding: 8px 12px;
-      border: 1px solid var(--muted-border);
-      border-radius: 999px;
-      font-weight: 600;
-    }
-
-    /* Sections */
-    main { max-width: var(--max-width); margin: 0 auto; padding: 20px; }
-    section { padding: 60px 0; border-bottom: 1px solid var(--muted-border); }
-    h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
-    h3 { font-size: 20px; margin: 16px 0 8px; }
-
-    /* Cards */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .card {
-      background: var(--card-bg);
-      padding: 20px;
-      border: 1px solid var(--muted-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
-
-    /* Lists */
-    ul { margin-left: 18px; }
-    .projects li { margin-bottom: 12px; }
-
-    /* Footer */
-    footer {
-      background: var(--card-bg);
-      border-top: 1px solid var(--muted-border);
-      padding: 24px 20px;
-      text-align: center;
-      color: var(--footer-text);
-      font-size: 14px;
-    }
-
-    /* Back to top */
-    #backToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 10px 14px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: none;
-      box-shadow: var(--shadow);
-      transition: background .2s ease, transform .2s ease;
-      z-index: 100;
-    }
-    #backToTop:hover { background: var(--accent-hover); transform: translateY(-2px); }
-
-    /* Mobile nav with slide animation */
-    .nav-toggle { display: none; background: none; border: none; font-size: 22px; cursor: pointer; }
-    @media (max-width: 1080px) {
-      .hero { grid-template-columns: 1fr; text-align: center; }
-      .hero-meta { text-align: center; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .nav { display: none; }
-      .nav-toggle { display: block; }
-    }
-    .mobile-nav {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-      background: var(--card-bg);
-      border-top: 1px solid var(--muted-border);
-    }
-    .mobile-nav.open { max-height: 500px; }
-    .mobile-nav a {
-      display: block;
-      padding: 14px;
-      border-bottom: 1px dashed var(--muted-border);
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <div class="brand"><h1>Siddhesh Rane</h1></div>
-      <nav class="nav">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
-        <a href="#experience">Experience</a><a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a><a href="#education">Education</a><a href="#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a class="btn btn-primary" href="#projects">Explore</a>
-        <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO" target="_blank">📄 Resume</a>
-        <button class="nav-toggle" id="navToggle">☰</button>
-      </div>
+  return (
+    <div className={dark ? 'dark' : ''}>
+      {/* ... keep the rest of your JSX as it was ... */}
     </div>
-    <div id="mobileNav" class="mobile-nav">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
-      <a href="#experience">Experience</a><a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a><a href="#education">Education</a><a href="#contact">Contact</a>
-    </div>
-  </header>
+  );
+};
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section id="home" class="hero">
-      <div>
-        <h2>Hi, I’m Siddhesh Rane</h2>
-        <p class="lead">Junior Data Analyst • SQL • Python • Excel • Power BI</p>
-        <p style="margin-top:16px;">
-          <a class="btn btn-primary" href="#projects">Explore</a>
-          <a class="btn btn-outline" href="https://drive.google.com/uc?export=download&id=1iqG9G8T-LUpb11OG82Xb2Qd8jEc1H6lO" target="_blank">📄 Resume</a>
-        </p>
-      </div>
-      <div class="hero-meta">
-        <p>📍 Mumbai, India</p>
-        <p>🎓 B.E. Electronics Engg.</p>
-        <p><span class="chip">💼 Open to Data Analyst Roles</span></p>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I’m an aspiring Data Analyst passionate about transforming raw data into actionable insights. Skilled in SQL, Python, Excel, and Power BI, I specialize in building dashboards, performing data analysis, and supporting data-driven decision-making.</p>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid-2">
-        <div class="card"><h3>💻 Programming & Data</h3><ul><li>SQL</li><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li><li>Scikit-learn</li><li>Jupyter Notebook</li><li>Git/GitHub</li></ul></div>
-        <div class="card"><h3>📊 Business Intelligence</h3><ul><li>Power BI</li><li>DAX</li><li>Data Modeling</li><li>Excel</li><li>Power Query</li><li>Pivot Tables</li><li>Google Sheets</li></ul></div>
-        <div class="card"><h3>🗄️ Databases</h3><ul><li>MySQL</li><li>PostgreSQL</li></ul></div>
-        <div class="card"><h3>🚀 Core Competencies</h3><ul><li>Data Cleaning & Validation</li><li>Data Visualization</li><li>Business Insights</li><li>Problem Solving</li><li>Communication</li></ul></div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <h3>Junior Data Analyst</h3>
-      <p><strong>Violet Infosystems Pvt. Ltd.</strong> | Nov 2024 – Present</p>
-      <ul><li>Created Power BI dashboards for sales & operational insights.</li><li>Automated Excel reports, reducing manual effort.</li><li>Wrote SQL queries for data cleaning, validation, and analysis.</li><li>Analyzed LMS & Navigator platform performance.</li></ul>
-      <h3>Junior Data Analyst (Training)</h3>
-      <p><strong>Violet Infosystems Pvt. Ltd.</strong> | May 2024 – Nov 2024</p>
-      <ul><li>Hands-on training in SQL, Python, Power BI & Excel.</li><li>Worked on live projects involving sales analytics.</li></ul>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul class="projects">
-        <li>🎵 <strong>Digital Music Store – SQL</strong> — Advanced SQL queries. <a href="https://github.com/SiddheshSRane/Music-Store-Data-Analysis-using-SQL" target="_blank">GitHub</a></li>
-        <li>🛍 <strong>Diwali Sales Analysis – Python</strong> — EDA with Pandas & Seaborn. <a href="https://github.com/SiddheshSRane/Python_Diwali_Sales_Analysis" target="_blank">GitHub</a></li>
-        <li>📊 <strong>Madhav Store Dashboard – Power BI</strong> — Interactive dashboard. <a href="https://github.com/SiddheshSRane/Madhav_Store_PowerBI_Dashboard" target="_blank">GitHub</a></li>
-        <li>🏬 <strong>Super Store Dashboard – Power BI</strong> — Sales performance insights. <a href="https://github.com/SiddheshSRane/Super-Store-Sales-Dashboard" target="_blank">GitHub</a></li>
-      </ul>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul>
-        <li>SQL (Basic) — HackerRank</li>
-        <li>Certified Data Scientist — TryCatch Classes (<a href="https://drive.google.com/file/d/1aunctSzpS1d2pPpCKCdV0VgC2elcbGNV/view" target="_blank">View</a>)</li>
-        <li>Data Analytics Simulation — Accenture via Forage</li>
-        <li>SQL & Database Bootcamp — Udemy (<a href="https://www.udemy.com/certificate/UC-de1f1f38-1a83-4c12-99c0-051c8d22da49/" target="_blank">View</a>)</li>
-        <li>Data Analyst Bootcamp — Udemy (<a href="https://www.udemy.com/certificate/UC-087d7c04-ac24-410f-aa8c-24e40af1e409/" target="_blank">View</a>)</li>
-      </ul>
-    </section>
-
-    <!-- Education -->
-    <section id="education">
-      <h2>Education</h2>
-      <p><strong>B.E. Electronics Engineering</strong> — Atharva College of Engineering (2019–2022)</p>
-      <p><strong>Diploma</strong> — Thakur Polytechnic (2017–2019)</p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <p>I’d love to hear from you — project, job opportunity, or just a chat!</p>
-      <p><a href="mailto:siddhesh@example.com">Email</a> | <a href="tel:+919876543210">Call</a> | <a href="https://github.com/SiddheshSRane" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/siddhesh-rane-657aa71b7/" target="_blank">LinkedIn</a></p>
-    </section>
-  </main>
-
-  <footer>© 2025 Siddhesh Rane. Built with ❤️</footer>
-  <button id="backToTop">⬆ Top</button>
-
-  <script>
-    // Mobile nav toggle
-    const btn = document.getElementById('navToggle');
-    const mobileNav = document.getElementById('mobileNav');
-    btn.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      btn.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
-    });
-
-    // Back to top functionality
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-</body>
-</html>
+export default App;
