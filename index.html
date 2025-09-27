@@ -9,24 +9,10 @@
   <meta name="author" content="Siddhesh Rane" />
   <link rel="canonical" href="https://yourdomain.com/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Siddhesh Rane | Data Analyst Portfolio" />
-  <meta property="og:description" content="Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com/" />
-  <meta property="og:image" content="https://yourdomain.com/preview.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Siddhesh Rane | Data Analyst Portfolio" />
-  <meta name="twitter:description" content="Junior Data Analyst skilled in SQL, Python, Power BI, and Excel." />
-  <meta name="twitter:image" content="https://yourdomain.com/preview.png" />
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
 
-  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -40,7 +26,7 @@
       --footer-text: #6b7280;
       --card-bg: #ffffff;
       --radius: 12px;
-      --max-width: 980px;
+      --max-width: 1080px;
       --shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
@@ -69,12 +55,13 @@
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 14px 20px;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
+      gap: 20px;
     }
-    .brand h1 { font-size: 18px; font-weight: 700; color: var(--heading); }
-    .nav { display: flex; gap: 16px; font-weight: 500; }
+    .brand h1 { font-size: 20px; font-weight: 700; color: var(--heading); white-space: nowrap; }
+    .nav { display: flex; justify-content: center; gap: 24px; font-weight: 500; flex-wrap: wrap; }
     .header-actions { display: flex; gap: 12px; align-items: center; }
 
     /* Buttons */
@@ -85,17 +72,9 @@
       cursor: pointer;
       transition: transform .15s ease, background .15s ease;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: var(--shadow);
-    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
-    .btn-outline {
-      border: 1px solid var(--muted-border);
-      color: var(--text);
-      background: transparent;
-    }
+    .btn-outline { border: 1px solid var(--muted-border); color: var(--text); background: transparent; }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     /* Hero */
@@ -169,18 +148,28 @@
     }
     #backToTop:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
-    /* Responsive */
+    /* Mobile nav with slide animation */
     .nav-toggle { display: none; background: none; border: none; font-size: 22px; cursor: pointer; }
-    @media (max-width: 840px) {
+    @media (max-width: 1080px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .hero-meta { text-align: center; }
       .grid-2 { grid-template-columns: 1fr; }
       .nav { display: none; }
       .nav-toggle { display: block; }
     }
-    .mobile-nav { display: none; }
-    .mobile-nav.open { display: block; }
-    .mobile-nav a { display: block; padding: 14px; border-bottom: 1px dashed var(--muted-border); }
+    .mobile-nav {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+      background: var(--card-bg);
+      border-top: 1px solid var(--muted-border);
+    }
+    .mobile-nav.open { max-height: 500px; }
+    .mobile-nav a {
+      display: block;
+      padding: 14px;
+      border-bottom: 1px dashed var(--muted-border);
+    }
   </style>
 </head>
 <body>
@@ -290,29 +279,21 @@
   </main>
 
   <footer>© 2025 Siddhesh Rane. Built with ❤️</footer>
-
-  <!-- Back to Top Button -->
   <button id="backToTop">⬆ Top</button>
 
   <script>
     // Mobile nav toggle
-    (function () {
-      const btn = document.getElementById('navToggle');
-      const mobileNav = document.getElementById('mobileNav');
-      btn.addEventListener('click', () => {
-        const open = mobileNav.classList.toggle('open');
-        btn.textContent = open ? '✕' : '☰';
-      });
-    })();
+    const btn = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    btn.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      btn.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
+    });
 
     // Back to top functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
