@@ -1,0 +1,135 @@
+/* ---------- GLOBAL SPACING ---------- */
+section.ftco-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.ftco-section h1.big,
+.ftco-section h2.mb-4 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---------- NAVBAR ---------- */
+#ftco-navbar .container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- HERO ---------- */
+.hero .text {
+  padding-top: 10vh;
+  line-height: 1.4;
+}
+.hero .overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- ABOUT / SKILLS ---------- */
+.about-info li span:first-child {
+  width: 160px;
+  display: inline-block;
+  font-weight: 500;
+}
+.about-info li span:last-child {
+  text-align: left;
+}
+.skill-mf span {
+  display: inline-block;
+  width: 160px;
+  font-weight: 500;
+}
+.skill-mf .pull-right {
+  float: right;
+}
+.skill-mf .progress {
+  margin: 0.6rem 0 1.4rem;
+}
+.skill-mf .progress-bar {
+  background-color: #ffbd39;
+}
+
+/* ---------- RESUME ---------- */
+.resume-wrap {
+  margin-bottom: 30px;
+}
+.resume-wrap h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.resume-wrap .date {
+  color: #ffbd39;
+  font-weight: 500;
+}
+.resume-wrap .position {
+  font-style: italic;
+}
+
+/* ---------- PROJECTS ---------- */
+.block-20 {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+}
+.blog-entry .text {
+  min-height: 160px;
+}
+.blog-entry .heading a {
+  color: #222;
+  transition: color 0.3s ease;
+}
+.blog-entry .heading a:hover {
+  color: #ffbd39;
+}
+
+/* ---------- COUNTERS ---------- */
+.block-18 {
+  padding: 20px;
+}
+.block-18 .text {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- FOOTER ---------- */
+.ftco-footer p {
+  line-height: 1.6;
+}
+.ftco-footer p a {
+  color: #ffbd39;
+}
+.ftco-footer p a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991px) {
+  .hero .text {
+    text-align: center;
+    padding-top: 15vh;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+  .about-info li span:first-child {
+    width: 120px;
+  }
+  .block-20 {
+    height: 200px;
+  }
+}
+@media (max-width: 575px) {
+  .about-info li span:first-child {
+    width: 100px;
+    font-size: 14px;
+  }
+  .skill-mf span {
+    width: 100px;
+    font-size: 14px;
+  }
+}
