@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="utf-8" />
@@ -65,10 +65,6 @@
     <div class="container">
       <a class="navbar-brand" href="#home">Siddhesh Rane</a>
       <div class="d-flex align-items-center order-lg-last ms-2">
-        <button id="themeToggle" class="btn btn-sm btn-icon rounded-circle me-2" aria-label="Toggle Theme">
-          <i class="bi bi-sun-fill sun-icon"></i>
-          <i class="bi bi-moon-fill moon-icon"></i>
-        </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -517,8 +513,8 @@
 
       <!-- Heading -->
       <div class="text-center mb-5">
-        <h2 class="fw-bold text-white">Contact Me</h2>
-        <p class="text-light">Let’s connect for collaborations or opportunities!</p>
+        <h2 class="fw-bold">Contact Me</h2>
+        <p class="text-muted">Let’s connect for collaborations or opportunities!</p>
       </div>
 
       <!-- Contact Card -->
@@ -667,27 +663,7 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script src="js/app.min.js" defer></script>
   <script src="js/pwa.js" defer></script>
-  <!-- Theme Toggle Script -->
-  <script>
-    (function() {
-      const themeToggle = document.getElementById('themeToggle');
-      const html = document.documentElement;
-      const storageKey = 'portfolio-theme';
 
-      // Load initial theme
-      const savedTheme = localStorage.getItem(storageKey) || 'light';
-      html.setAttribute('data-theme', savedTheme);
-
-      if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-          const currentTheme = html.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          html.setAttribute('data-theme', newTheme);
-          localStorage.setItem(storageKey, newTheme);
-        });
-      }
-    })();
-  </script>
 </body>
 
 </html>
